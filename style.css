@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    font-family: "coordinates-variable", sans-serif;
+    font-variation-settings: "wght" 300;
+}
+
+/* .hero {
+    background-image: url();
+} */
+
+body {
+    background-color: #2E2E2E;
+}
+
+.instructions p {
+    background-color: #A78EB8;
+    color: white;
+    padding: 2%;
+}
+
+
+
+.rules {
+    background-color: #FABB63;
+    padding: 2%;
+    margin: 1%;
+}
+
+footer {
+    background-color: #644B77;
+    padding: 2%;
+}
+
+footer h4 {
+    text-align: right;
+}
