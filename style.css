@@ -18,7 +18,20 @@ body {
     padding: 2%;
 }
 
+.offense {
+    width: 800px;
+    height: 800px;
+    background-color: #2D592C;
+    margin: 2%;
+}
 
+.defence {
+    width: 800px;
+    height: 900px;
+    background-color: blue;
+  
+   
+}
 
 .rules {
     background-color: #FABB63;
