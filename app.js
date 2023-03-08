@@ -1,9 +1,17 @@
+// set grid 10rows x 10columns
+const rows = 10;
+const col = 10;
 
-const witch = {
-    cauldron: 1,
-    youngWitch: 2,
-    adultWitch: 4,
-    elderWitch: "value",
+let gameboard = document.getElementById("playingBoard")
+
+
+
+
+
+
+
+element.addEventListener('click', (e) => launchpotion(e.target)) 
+
+function launchpotion(e){
+
 }
-
-witch.elderWitch
