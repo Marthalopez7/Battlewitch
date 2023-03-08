@@ -2,6 +2,7 @@
     box-sizing: border-box;
     font-family: "coordinates-variable", sans-serif;
     font-variation-settings: "wght" 300;
+    font-size: 1.1rem;
 }
 
 /* .hero {
@@ -16,9 +17,31 @@ body {
     background-color: #A78EB8;
     color: white;
     padding: 2%;
+    margin: 2%;
 }
 
-.offense {
+a {
+    text-decoration: none;
+    color: white;
+    background-color: #2D592C;
+    padding: 1%;
+}
+
+.pbs {
+    display: flex;
+    align-content: center;
+    margin-left: 6%;
+    grid-column: repeat (10);
+    grid-row: repeat (10);
+}
+
+.pbm {
+    display: flex;
+    align-content: center;
+    margin-left: 6%;
+}
+
+.offence {
     width: 800px;
     height: 800px;
     background-color: #2D592C;
@@ -27,16 +50,15 @@ body {
 
 .defence {
     width: 800px;
-    height: 900px;
-    background-color: blue;
-  
-   
+    height: 800px;
+    background-color: #2D592C;
+    margin: 2%; 
 }
 
 .rules {
     background-color: #FABB63;
     padding: 2%;
-    margin: 1%;
+    margin: 2%;
 }
 
 footer {
