@@ -12,18 +12,21 @@
     background-size: cover;
 }
 
-
 body {
     background-color: #2E2E2E;
 }
 
 .instructions p {
-    background-color: #A78EB8;
+    background-color: rgb(167, 142, 184);
     color: white;
     padding: 2%;
+    width: 30%;
 }
 
-
+.cat-inst {
+    display: flex;
+    padding: 1%;
+}
 
 .rules {
     background-color: #FABB63;
