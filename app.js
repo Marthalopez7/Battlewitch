@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // set grid 10rows x 10columns
 const rows = 10;
 const col = 10;
@@ -38,9 +36,4 @@ function hitWitch() {
     document.pbs.style.backgroundcolor = '#512525';
 }
 
-// document.addEventListener("click", hitWitch, true);
-
-// function hitWitch() {
-//     document.body.style.backgroundImage = 'potion';
-// }
 
