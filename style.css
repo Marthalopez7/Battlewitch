@@ -5,16 +5,20 @@
     font-size: 1.1rem;
 }
 
-/* .hero {
-    background-image: url();
-} */
+.hero {
+    background-image: url(images/sr29882b5303b2f.png);
+    height: 70vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
 
 body {
     background-color: #2E2E2E;
 }
 
 .instructions p {
-    background-color: #A78EB8;
+    background-color: rgb(167, 142, 184);
     color: white;
     padding: 2%;
     margin: 2%;
@@ -54,6 +58,13 @@ a {
     background-color: #2D592C;
     margin: 2%; 
 }
+    width: 30%;
+}
+
+.cat-inst {
+    display: flex;
+    padding: 1%;
+}
 
 .rules {
     background-color: #FABB63;
@@ -68,4 +79,5 @@ footer {
 
 footer h4 {
     text-align: right;
+    color: whitesmoke;
 }

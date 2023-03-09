@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 // set grid 10rows x 10columns
 const rows = 10;
 const col = 10;
