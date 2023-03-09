@@ -2,6 +2,8 @@
     box-sizing: border-box;
     font-family: "coordinates-variable", sans-serif;
     font-variation-settings: "wght" 300;
+    font-size: 1.1rem;
+    line-height: 150%;
 }
 
 .hero {
@@ -16,26 +18,21 @@ body {
     background-color: #2E2E2E;
 }
 
-.instructions p {
-    background-color: rgb(167, 142, 184);
-    color: white;
-    padding: 2%;
-    width: 100%;
-}
-
-
 .cat-inst {
     display: flex;
     padding: 1%;
-    width: 100%;
+    margin: 1%;
+    background-color: rgb(167, 142, 184);
+    height: 15vh;
 }
 
-.cat-logo {
-    width: 10%;
+.instructions p {
+    color: white;
+    text-indent: 1.5%;
 }
 
 img {
-    height: 130%;
+    width: 11vh;
 }
 
 .rules {
