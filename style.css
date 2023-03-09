@@ -3,6 +3,7 @@
     font-family: "coordinates-variable", sans-serif;
     font-variation-settings: "wght" 300;
     font-size: 1.1rem;
+    line-height: 150%;
 }
 
 .hero {
@@ -64,6 +65,18 @@ a {
 .cat-inst {
     display: flex;
     padding: 1%;
+    margin: 1%;
+    background-color: rgb(167, 142, 184);
+    height: 15vh;
+}
+
+.instructions p {
+    color: white;
+    text-indent: 1.5%;
+}
+
+img {
+    width: 11vh;
 }
 
 .rules {
