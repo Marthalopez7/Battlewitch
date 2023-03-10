@@ -49,18 +49,29 @@ a {
     margin-left: 6%;
 }
 
-.offence {
+#offence {
     width: 800px;
     height: 800px;
     background-color: #2D592C;
     margin: 2%;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr); 
 }
 
-.defence {
+#defence {
     width: 800px;
     height: 800px;
     background-color: #2D592C;
-    margin: 2%; 
+    margin: 2%;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr); 
+}
+
+.space {
+    box-sizing: border-box;
+    border: 1px solid #000;
 }
 
 .cat-inst {

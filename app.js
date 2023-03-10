@@ -1,39 +1,121 @@
-// set grid 10rows x 10columns
-const rows = 10;
-const col = 10;
-
-// links to the html div element
-let gameboard = document.getElementById("playingBoard");
-
-// grid 2 of each witch type 0 = nothing, 1 = witch, 2 = damaged witch, 3 = witch ded, 4 = potion, 5 = miss
-let gridBoard = [
-    [0,1,1,0,1,1,0,0,0,0]
-    [0,0,0,0,0,0,0,0,1,0]
-    [0,0,1,1,0,0,0,0,0,0]
-    [0,0,1,1,0,0,0,1,0,0]
-    [0,0,0,0,0,0,0,1,0,0]
-    [0,0,0,1,0,0,0,1,1,0]
-    [0,1,0,0,0,0,0,0,0,0]
-    [0,1,0,0,0,1,1,0,0,0]
-    [0,1,1,0,0,1,1,0,0,0]
-    [0,0,0,0,0,0,0,0,0,0]
+boardLayouts = [
+    [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0]
+    ]
 ];
 
 
-
-// click a sqaure to launch potion bottle
-element.addEventListener('click', (e) => launchpotion(e.target)) 
-
-function launchpotion(event){
-
+function buildBoard(type) {
+    let board = [];
+    if (type == 'offence'){
+        board = [
+            [0,1,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,1,0]
+        ]
+    } else if (type == 'defence'){
+        board = randomBoard()
+    }
+    console.log(board);
+    return board
 }
 
-
-// when user clicks a sqaure and it hits, the color of the sqaure changes it to red
-document.addEventListener("click", hitWitch, false);
-
-function hitWitch() {
-    document.pbs.style.backgroundcolor = '#512525';
+class Player  {
+    constructor(){
+        this.offenceMap = buildBoard('offence');
+        this.defenceMap = buildBoard('defence');
+    }
 }
+
+const witches = [
+    {
+        name: 'test 2x2 witch', // withch' 0'
+        img: 'elder-witch.png',
+        rows: 2,
+        cols: 2
+    }
+]
+
+const potions = [
+    {
+        name: 'test1',
+        effect: '',
+        img: ''
+    },
+    {
+        name: 'test2',
+        effect: ''
+    },
+    {
+        name: 'test3',
+        effect: ''
+    },
+    {
+        name: 'test4',
+        effect: ''
+    },
+    {
+        name: 'test5',
+        effect: ''
+    },
+    {
+        name: 'test6',
+        effect: ''
+    },
+];
+
+function randomNum(min, max) { // min and max included 
+    let number = Math.floor(Math.random() * (max - min + 1) + min);
+    console.log(number);
+    return number
+  }
+
+function randomPotion(){
+    return potions[randomNum(0, potions.length - 1)];
+}
+
+function randomBoard(){
+    return boardLayouts[randomNum(0, boardLayouts.length - 1)];
+}
+
+var turn = 0;
+
+const player1 = new Player();
+const player2 = new Player();
+
+function displayBoards(player) {
+    const offenceBoardHtml = document.getElementById('offence');
+    const defenceBoardHtml = document.getElementById('defence'); //todo finish building defence board
+    
+    for(let row = 0; row < player.offenceMap.length; row++){
+        for(let col = 0; col < player.offenceMap[row].length; col++) {
+            let element = document.createElement('div');
+            element.classList.add('space');
+            element.innerText = player.offenceMap[row][col];
+            offenceBoardHtml.appendChild(element);
+            console.log('test');
+        }
+    }
+
+    // build defence board
+}
+
+displayBoards(player1);
 
 
