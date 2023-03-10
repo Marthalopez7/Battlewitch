@@ -22,7 +22,17 @@ a {
     text-decoration: none;
     color: white;
     background-color: #2D592C;
-    padding: 1%;
+    padding: 1.5%;
+    border-radius: 5px;
+    text-shadow: black 1.5px 1.5px;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.playing-board {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1.5%;
 }
 
 .pbs {
@@ -74,6 +84,10 @@ img {
     background-color: #FABB63;
     padding: 2%;
     margin: 2%;
+}
+
+.rules h3 {
+    font-size: 1.3rem;
 }
 
 footer {
