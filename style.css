@@ -18,13 +18,6 @@ body {
     background-color: #2E2E2E;
 }
 
-.instructions p {
-    background-color: rgb(167, 142, 184);
-    color: white;
-    padding: 2%;
-    margin: 2%;
-}
-
 a {
     text-decoration: none;
     color: white;
@@ -58,8 +51,6 @@ a {
     height: 800px;
     background-color: #2D592C;
     margin: 2%; 
-}
-    width: 30%;
 }
 
 .cat-inst {
