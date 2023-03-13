@@ -1,9 +1,9 @@
-const pbs= document.getElementById("playingBoard")
-const pbm= document.getElementById("playingBoard")
-const startButton = document.getElementById('start')
-const randomizeButton = document.getElementsById('randomise')
-const isGameOver = false
-const gameMode = ""
+// const pbs= document.getElementById("playingBoard")
+// const pbm= document.getElementById("playingBoard")
+// const startButton = document.getElementById('start')
+// const randomizeButton = document.getElementsById('randomise')
+// const isGameOver = false
+// const gameMode = ""
 boardLayouts = [
     [
         [0,0,0,0,0,0,0,0,0,0],
@@ -24,7 +24,6 @@ function buildBoard(type) {
     let board = [];
     if (type == 'offence'){
         board = [
-            [0,1,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
@@ -33,7 +32,8 @@ function buildBoard(type) {
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,1,0]
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0]
         ]
     } else if (type == 'defence'){
         board = randomBoard()
@@ -50,27 +50,27 @@ class Player  {
     }
 }
 
-pbs.addEventListener('click', startSinglePlayer);
+// pbs.addEventListener('click', startSinglePlayer);
 
-function startSinglePlayer() {
-    gamemode = 'singlePlayer'
-    generate(witches[0])
-    generate(witches[1])
-    generate(witches[2])
-    generate(witches[3])
-    startButton.addEventListener('click', playSinglePlayer)  
-}
+// function startSinglePlayer() {
+//     gamemode = 'singlePlayer'
+//     generate(witches[0])
+//     generate(witches[1])
+//     generate(witches[2])
+//     generate(witches[3])
+//     startButton.addEventListener('click', playSinglePlayer)  
+// }
 
-function playSinglePlayer() {
-    if (isGameOver) return
-    if ()
-}
+// function playSinglePlayer() {
+//     if (isGameOver) return
+//     if ()
+// }
 
-pbm.addEventListener('click', startMultiplayer);
+// pbm.addEventListener('click', startMultiplayer);
 
-function startMultiplayer() {
-    gamemode = 'multiplayer'
-}
+// function startMultiplayer() {
+//     gamemode = 'multiplayer'
+// }
 
 const witches = [
     {
