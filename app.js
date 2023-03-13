@@ -1,5 +1,5 @@
-const pbs= document.getElementById("playingBoardS")
-const pbm= document.getElementById("playingBoardM")
+const pbs= document.getElementById("playingBoard")
+const pbm= document.getElementById("playingBoard")
 const startButton = document.getElementById('start')
 const randomizeButton = document.getElementsById('randomise')
 const isGameOver = false
