@@ -1,3 +1,9 @@
+const pbs= document.getElementById("playingBoardS")
+const pbm= document.getElementById("playingBoardM")
+const startButton = document.getElementById('start')
+const randomizeButton = document.getElementsById('randomise')
+const isGameOver = false
+const gameMode = ""
 boardLayouts = [
     [
         [0,0,0,0,0,0,0,0,0,0],
@@ -18,6 +24,7 @@ function buildBoard(type) {
     let board = [];
     if (type == 'offence'){
         board = [
+            [0,1,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
@@ -26,8 +33,7 @@ function buildBoard(type) {
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0]
+            [0,0,0,0,0,0,0,0,1,0]
         ]
     } else if (type == 'defence'){
         board = randomBoard()
@@ -36,11 +42,34 @@ function buildBoard(type) {
     return board
 }
 
+
 class Player  {
     constructor(){
         this.offenceMap = buildBoard('offence');
         this.defenceMap = buildBoard('defence');
     }
+}
+
+pbs.addEventListener('click', startSinglePlayer);
+
+function startSinglePlayer() {
+    gamemode = 'singlePlayer'
+    generate(witches[0])
+    generate(witches[1])
+    generate(witches[2])
+    generate(witches[3])
+    startButton.addEventListener('click', playSinglePlayer)  
+}
+
+function playSinglePlayer() {
+    if (isGameOver) return
+    if ()
+}
+
+pbm.addEventListener('click', startMultiplayer);
+
+function startMultiplayer() {
+    gamemode = 'multiplayer'
 }
 
 const witches = [
@@ -74,6 +103,7 @@ const potions = [
         name: 'test5',
         effect: ''
     },
+
 ];
 
 function randomNum(min, max) { // min and max included 
@@ -110,17 +140,11 @@ function displayBoards(player) {
     }
 
     // build defence board
-    for(let row = 0; row < player.defenceMap.length; row++){
-        for(let col = 0;col < player.defenceMap[row].length; col++) {
-            let element = document.createElement('div');
-            element.classList.add('space');
-            element.innerText = player.defenceMap[row][col];
-            defenceBoardHtml.appendChild(element);
-            console.log('test');
-        }
-    }
 }
 
 displayBoards(player1);
 
-
+function gameOver() {
+    isGameOver = true
+    startButton.removeEventListener('click', playSinglePlayer)
+}
