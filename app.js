@@ -45,7 +45,25 @@ class Player  {
 
 const witches = [
     {
-        name: 'test 2x2 witch', // withch' 0'
+        name: 'cauldron', 
+        img: 'cauldron.png',
+        rows: 1,
+        cols: 1
+    },
+    {
+        name: 'young witch', 
+        img: 'young-witch.png',
+        rows: 1,
+        cols: 2
+    },
+    {
+        name: 'adult witch', 
+        img: 'adult-witch.png',
+        rows: 2,
+        cols: 3
+    },
+    {
+        name: 'elder witch', 
         img: 'elder-witch.png',
         rows: 2,
         cols: 2
@@ -54,25 +72,29 @@ const witches = [
 
 const potions = [
     {
-        name: 'test1',
-        effect: '',
+        name: 'Shield',
+        effect: 'When your opponent takes a shot, whether is a hit or miss, you will not take any damage for one turn',
         img: ''
     },
     {
-        name: 'test2',
-        effect: ''
+        name: 'Healing',
+        effect: 'You are able to heal one of your characters (whether it has already fallen or just took some damage)',
+        img: ''
     },
     {
-        name: 'test3',
-        effect: ''
+        name: 'Clairvoyance',
+        effect: 'You are able to see one row or column of your opponent’s board',
+        img:''
     },
     {
-        name: 'test4',
-        effect: ''
+        name: 'Explosion',
+        effect: 'You may click a square and a cross-shaped explosion will occur',
+        img:''
     },
     {
-        name: 'test5',
-        effect: ''
+        name: 'Skip',
+        effect: 'This potion skips your next turn',
+        img:''
     },
 ];
 
@@ -97,7 +119,7 @@ const player2 = new Player();
 
 function displayBoards(player) {
     const offenceBoardHtml = document.getElementById('offence');
-    const defenceBoardHtml = document.getElementById('defence'); //todo finish building defence board
+    const defenceBoardHtml = document.getElementById('defence'); 
     
     for(let row = 0; row < player.offenceMap.length; row++){
         for(let col = 0; col < player.offenceMap[row].length; col++) {
@@ -109,7 +131,6 @@ function displayBoards(player) {
         }
     }
 
-    // build defence board
     for(let row = 0; row < player.defenceMap.length; row++){
         for(let col = 0;col < player.defenceMap[row].length; col++) {
             let element = document.createElement('div');

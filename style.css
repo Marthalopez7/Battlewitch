@@ -7,7 +7,7 @@
 }
 
 .hero {
-    background-image: url(images/sr29882b5303b2f.png);
+    background-image: url(images/banner.png);
     height: 70vh;
     width: 100%;
     background-position: center;
@@ -39,8 +39,6 @@ a {
     display: flex;
     align-content: center;
     margin-left: 6%;
-    grid-column: repeat (10);
-    grid-row: repeat (10);
 }
 
 .pbm {
