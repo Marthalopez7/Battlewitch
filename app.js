@@ -18,7 +18,6 @@ function buildBoard(type) {
     let board = [];
     if (type == 'offence'){
         board = [
-            [0,1,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
@@ -27,7 +26,8 @@ function buildBoard(type) {
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,1,0]
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0]
         ]
     } else if (type == 'defence'){
         board = randomBoard()
@@ -74,10 +74,6 @@ const potions = [
         name: 'test5',
         effect: ''
     },
-    {
-        name: 'test6',
-        effect: ''
-    },
 ];
 
 function randomNum(min, max) { // min and max included 
@@ -114,6 +110,15 @@ function displayBoards(player) {
     }
 
     // build defence board
+    for(let row = 0; row < player.defenceMap.length; row++){
+        for(let col = 0;col < player.defenceMap[row].length; col++) {
+            let element = document.createElement('div');
+            element.classList.add('space');
+            element.innerText = player.defenceMap[row][col];
+            defenceBoardHtml.appendChild(element);
+            console.log('test');
+        }
+    }
 }
 
 displayBoards(player1);
