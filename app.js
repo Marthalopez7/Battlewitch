@@ -61,7 +61,7 @@ const witches = [
     {
         name: 'adult witch', 
         img: 'adult-witch.png',
-        rows: 2,
+        rows: 1,
         cols: 3
     },
     {
