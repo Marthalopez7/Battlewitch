@@ -126,3 +126,14 @@ footer h4 {
     text-align: right;
     color: whitesmoke;
 }
+
+#options-container {
+    position: absolute;
+}
+
+#cauldron-container,
+#young-container,
+#adult-container,
+#elder-container {
+    cursor: move;
+}

@@ -30,6 +30,12 @@
             <button id="randomize">Randomize</button>
             <button id="submit">Submit</button>
         </div>
+        <div id="options-container">
+            <div id="cauldron-container" draggable="true"><img src="images/cauldron.png" alt="cauldron"></div>
+            <div id="young-container" draggable="true"><img src="images/young-witch.png" alt="youngWitch"></div>
+            <div id="adult-container" draggable="true"><img src="images/adult-witch.png" alt="adultWitch"></div>
+            <div id="elder-container" draggable="true"><img src="images/elder-witch.png" alt="elderWitch"></div>
+        </div>
         <section class="rules">
             <h3>How to play</h3>
             <ol>
@@ -59,6 +65,20 @@
         </section>
     </main>
     <footer>
+        <audio id="sound" src="sounds/background-music.mp3" autoplay="0" autostart="0"></audio>
+        <button onclick="playAud()" type="button">Play</button>
+        <button onclick="pauseAud()" type="button">Pause</button>
+        <script>
+            let aud = document.getElementById("sound");
+
+            function playAud() { 
+                aud.play(); 
+            } 
+
+            function pauseAud() { 
+                aud.pause(); 
+            }
+        </script>   
         <h4>Ⓒ Copyright 2023</h4>
     </footer>
     <script src="app.js"></script>

@@ -15,7 +15,7 @@
                 <img src="images/cat-mascot.gif" alt="cat-gif">
             </div>
             <section class="instructions">
-                <p>Welcome to BattleWitch! In this game you will cast spells and throw potions to reveal all of your opponet's witches. However, while playing you may encounter different potions and curses which may aid or hinder you in battle. Good luck and have fun!</p>
+                <p>Welcome to BattleWitch! In this game you will throw potions to reveal all of your opponet's witches and cauldrons. However, while playing you may encounter different potions which may aid or hinder your battle. Good luck and have fun!</p>
             </section>
         </section>
         <div class="playing-board" id="playingBoard">
@@ -51,6 +51,20 @@
         </section>
     </main>
     <footer>
+        <audio id="sound" src="sounds/background-music.mp3" autoplay="0" autostart="0"></audio>
+        <button onclick="playAud()" type="button">Play</button>
+        <button onclick="pauseAud()" type="button">Pause</button>
+        <script>
+            let aud = document.getElementById("sound");
+
+            function playAud() { 
+                aud.play(); 
+            } 
+
+            function pauseAud() { 
+                aud.pause(); 
+            }
+        </script> 
         <h4>Ⓒ Copyright 2023</h4>
     </footer>
     <script src="app.js"></script>
