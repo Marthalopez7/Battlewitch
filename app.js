@@ -1,9 +1,4 @@
-// const pbs= document.getElementById("playingBoard")
-// const pbm= document.getElementById("playingBoard")
-// const startButton = document.getElementById('start')
-// const randomizeButton = document.getElementsById('randomise')
-// const isGameOver = false
-// const gameMode = ""
+
 boardLayouts = [
     [
         [0,0,0,0,0,0,0,0,0,0],
@@ -50,28 +45,6 @@ class Player  {
     }
 }
 
-// pbs.addEventListener('click', startSinglePlayer);
-
-// function startSinglePlayer() {
-//     gamemode = 'singlePlayer'
-//     generate(witches[0])
-//     generate(witches[1])
-//     generate(witches[2])
-//     generate(witches[3])
-//     startButton.addEventListener('click', playSinglePlayer)  
-// }
-
-// function playSinglePlayer() {
-//     if (isGameOver) return
-//     if ()
-// }
-
-// pbm.addEventListener('click', startMultiplayer);
-
-// function startMultiplayer() {
-//     gamemode = 'multiplayer'
-// }
-
 const witches = [
     {
         name: 'cauldron', 
@@ -102,28 +75,28 @@ const witches = [
 const potions = [
     {
         name: 'Shield',
-        effect: 'When your opponent takes a shot, whether is a hit or miss, you will not take any damage for one turn',
-        img: ''
+        effect: 'You will not take any damage for one turn',
+        img: 'potion.png'
     },
     {
         name: 'Healing',
-        effect: 'You are able to heal one of your characters (whether it has already fallen or just took some damage)',
-        img: ''
+        effect: 'Heal one of your characters (whether it has already fallen or took some damage)',
+        img: 'potion.png'
     },
     {
         name: 'Clairvoyance',
-        effect: 'You are able to see one row or column of your opponent’s board',
-        img:''
+        effect: 'Expose one row or column of your opponent’s board',
+        img:'potion.png'
     },
     {
         name: 'Explosion',
-        effect: 'You may click a square and a cross-shaped explosion will occur',
-        img:''
+        effect: 'Your next shot will be a cross-shaped explosion',
+        img:'potion.png'
     },
     {
         name: 'Skip',
-        effect: 'This potion skips your next turn',
-        img:''
+        effect: 'Skips your turn',
+        img:'potion.png'
     },
 
 ];
