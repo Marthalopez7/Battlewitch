@@ -5,9 +5,25 @@
     font-size: 1.1rem;
 }
 
-/* .hero {
-    background-image: url();
-} */
+.options-container {
+    width: 500px;
+    height: 200px;
+    background-color: #392c59;
+    margin: 2%;
+}
+
+.elder-container {
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+}
+
+.pbs {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1.5%;
+}
+
 
 body {
     background-color: #2E2E2E;
@@ -19,40 +35,41 @@ body {
     padding: 2%;
     margin: 2%;
 }
+.playing-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#offence {
+    width: 800px;
+    height: 800px;
+    background-color: #2D592C;
+    margin: 2%;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr); 
+}
+
+#defence {
+    width: 800px;
+    height: 800px;
+    background-color: #2D592C;
+    margin: 2%;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr); 
+}
+
+.space {
+    box-sizing: border-box;
+    border: 1px solid #000;
+}
 
 a {
     text-decoration: none;
     color: white;
     background-color: #2D592C;
     padding: 1%;
-}
-
-.pbs {
-    display: flex;
-    align-content: center;
-    margin-left: 6%;
-    grid-column: repeat (10);
-    grid-row: repeat (10);
-}
-
-.pbm {
-    display: flex;
-    align-content: center;
-    margin-left: 6%;
-}
-
-.offence {
-    width: 800px;
-    height: 800px;
-    background-color: #2D592C;
-    margin: 2%;
-}
-
-.defence {
-    width: 800px;
-    height: 800px;
-    background-color: #2D592C;
-    margin: 2%; 
 }
 
 .rules {
