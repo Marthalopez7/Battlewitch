@@ -1,197 +1,171 @@
-const pbs= document.querySelector("#boardSingle")
+const playingBoard = document.querySelector('.playingboard')
 // const pbm= document.getElementById("playingBoard")
 // const startButton = document.getElementById('start')
-// const isGameOver = false
-// const gameMode = ""
-const optionContainer = document.querySelector('.options-container')
-const randomizeButton = document.querySelector('#randomize-button')
 
-let angle = 0
-function randomize(){
-    const witchoptions = Array.from(optionContainer.children)
-      if (angle === 0) {
-        angle == 90
-    } else {
-        angle = 0
-    }
-    witchoptions.forEach(witchoptions => witchoptions.style.transform =`rotate(${angle}deg)`)
-  
+const width = 10
+
+function buildBoard(){
+    const playingBoardF = document.createElement('div')
+    playingBoardF.classList.add('playing-board')
+    playingBoardF.style.backgroundColor = ('#2D592C')
 }
+buildBoard()
+
+// boardLayouts = [
+//     [
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0],
+//         [0,0,0,0,0,0,0,0,0,0]
+//     ]
+
+// ];
 
 
-randomizeButton.addEventListener('click', randomize)
-
-boardLayouts = [
-    [
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0]
-    ]
-];
-
-
-function buildBoard(type) {
-    let board = [];
-    if (type == 'offence'){
-        board = [
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0]
-        ]
-    } else if (type == 'defence'){
-        board = randomBoard()
-    }
-    console.log(board);
-    return board
-}
-
-
-class Player  {
-    constructor(){
-        this.offenceMap = buildBoard('offence');
-        this.defenceMap = buildBoard('defence');
-    }
-}
-
-// pbs.addEventListener('click', startSinglePlayer);
-
-// function startSinglePlayer() {
-//     gamemode = 'singlePlayer'
-//     generate(witches[0])
-//     generate(witches[1])
-//     generate(witches[2])
-//     generate(witches[3])
-//     startButton.addEventListener('click', playSinglePlayer)  
+// function buildBoard(type) {
+//     let board = [];
+//     if (type == 'offence'){
+//         board = [
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0],
+//             [0,0,0,0,0,0,0,0,0,0]
+//         ]
+//     } else if (type == 'defence'){
+//         board = randomBoard()
+//     }
+//     console.log(board);
+//     return board
 // }
 
-// function playSinglePlayer() {
-//     if (isGameOver) return
-//     if ()
+
+// class Player  {
+//     constructor(){
+//         this.offenceMap = buildBoard('offence');
+//         this.defenceMap = buildBoard('defence');
+//     }
 // }
 
-// pbm.addEventListener('click', startMultiplayer);
 
-// function startMultiplayer() {
-//     gamemode = 'multiplayer'
+
+// const witches = [
+//     {
+//         name: 'cauldron', 
+//         img: 'cauldron.png',
+//         rows: 1,
+//         cols: 1
+//     },
+//     {
+//         name: 'youngWitch', 
+//         img: 'young-witch.png',
+//         rows: 1,
+//         cols: 2
+//     },
+//     {
+//         name: 'adultWitch', 
+//         img: 'adult-witch.png',
+//         rows: 2,
+//         cols: 3
+//     },
+//     {
+//         name: 'elderWitch', 
+//         img: 'elder-witch.png',
+//         rows: 2,
+//         cols: 2
+//     }
+// ]
+
+
+// const potions = [
+//     {
+//         name: 'Shield',
+//         effect: 'When your opponent takes a shot, whether is a hit or miss, you will not take any damage for one turn',
+//         img: ''
+//     },
+//     {
+//         name: 'Healing',
+//         effect: 'You are able to heal one of your characters (whether it has already fallen or just took some damage)',
+//         img: ''
+//     },
+//     {
+//         name: 'Clairvoyance',
+//         effect: 'You are able to see one row or column of your opponent’s board',
+//         img:''
+//     },
+//     {
+//         name: 'Explosion',
+//         effect: 'You may click a square and a cross-shaped explosion will occur',
+//         img:''
+//     },
+//     {
+//         name: 'Skip',
+//         effect: 'This potion skips your next turn',
+//         img:''
+//     },
+
+// ];
+
+
+
+// addWitchCharacter(cauldron)
+
+// function randomNum(min, max) { // min and max included 
+//     let number = Math.floor(Math.random() * (max - min + 1) + min);
+//     console.log(number);
+//     return number
+//   }
+
+// function randomPotion(){
+//     return potions[randomNum(0, potions.length - 1)];
 // }
+// randomPotion()
 
-const witches = [
-    {
-        name: 'cauldron', 
-        img: 'cauldron.png',
-        rows: 1,
-        cols: 1
-    },
-    {
-        name: 'youngWitch', 
-        img: 'young-witch.png',
-        rows: 1,
-        cols: 2
-    },
-    {
-        name: 'adultWitch', 
-        img: 'adult-witch.png',
-        rows: 2,
-        cols: 3
-    },
-    {
-        name: 'elderWitch', 
-        img: 'elder-witch.png',
-        rows: 2,
-        cols: 2
-    }
-]
+// function randomBoard(){
+//     return boardLayouts[randomNum(0, boardLayouts.length - 1)];
+// }
+// randomBoard()
 
-const potions = [
-    {
-        name: 'Shield',
-        effect: 'When your opponent takes a shot, whether is a hit or miss, you will not take any damage for one turn',
-        img: ''
-    },
-    {
-        name: 'Healing',
-        effect: 'You are able to heal one of your characters (whether it has already fallen or just took some damage)',
-        img: ''
-    },
-    {
-        name: 'Clairvoyance',
-        effect: 'You are able to see one row or column of your opponent’s board',
-        img:''
-    },
-    {
-        name: 'Explosion',
-        effect: 'You may click a square and a cross-shaped explosion will occur',
-        img:''
-    },
-    {
-        name: 'Skip',
-        effect: 'This potion skips your next turn',
-        img:''
-    },
+// var turn = 0;
 
-];
+// const player1 = new Player();
+// const player2 = new Player();
 
-function randomNum(min, max) { // min and max included 
-    let number = Math.floor(Math.random() * (max - min + 1) + min);
-    console.log(number);
-    return number
-  }
-
-function randomPotion(){
-    return potions[randomNum(0, potions.length - 1)];
-}
-
-function randomBoard(){
-    return boardLayouts[randomNum(0, boardLayouts.length - 1)];
-}
-
-var turn = 0;
-
-const player1 = new Player();
-const player2 = new Player();
-
-function displayBoards(player) {
-    const offenceBoardHtml = document.getElementById('offence');
-    const defenceBoardHtml = document.getElementById('defence'); 
+// function displayBoards(player) {
+//     const offenceBoardHtml = document.getElementById('offence')
+//     const defenceBoardHtml = document.getElementById('defence'); 
     
-    for(let row = 0; row < player.offenceMap.length; row++){
-        for(let col = 0; col < player.offenceMap[row].length; col++) {
-            let element = document.createElement('div');
-            element.classList.add('space');
-            element.innerText = player.offenceMap[row][col];
-            offenceBoardHtml.appendChild(element);
-            console.log('test');
-        }
-    }
+//     for(let row = 0; row < player.offenceMap.length; row++){
+//         for(let col = 0; col < player.offenceMap[row].length; col++) {
+//             let element = document.createElement('div');
+//             element.classList.add('space');
+//             element.innerText = player.offenceMap[row][col];
+//             offenceBoardHtml.appendChild(element);
+//             console.log('test');
+//         }
+//     }
 
-    for(let row = 0; row < player.defenceMap.length; row++){
-        for(let col = 0;col < player.defenceMap[row].length; col++) {
-            let element = document.createElement('div');
-            element.classList.add('space');
-            element.innerText = player.defenceMap[row][col];
-            defenceBoardHtml.appendChild(element);
-            console.log('test');
-        }
-    }
-}
-
-displayBoards(player1);
-
-// function gameOver() {
-//     isGameOver = true
-//     startButton.removeEventListener('click', playSinglePlayer)
+//     for(let row = 0; row < player.defenceMap.length; row++){
+//         for(let col = 0;col < player.defenceMap[row].length; col++) {
+//             let element = document.createElement('div');
+//             element.classList.add('space');
+//             element.innerText = player.defenceMap[row][col];
+//             defenceBoardHtml.appendChild(element);
+//         }
+//     }
 // }
+
+// displayBoards(player1);
+
+

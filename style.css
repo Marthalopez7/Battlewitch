@@ -18,7 +18,7 @@
     margin: 10px;
 }
 
-.pbs {
+.playingboard {
     display: flex;
     justify-content: space-evenly;
     padding: 1.5%;
@@ -40,6 +40,16 @@ body {
     justify-content: space-evenly;
 }
 
+#game-info {
+    color: whitesmoke;
+}
+
+#playingBoard {
+    width: 800px;
+    height: 800px;
+}
+
+/* 
 #offence {
     width: 800px;
     height: 800px;
@@ -58,12 +68,16 @@ body {
     display: grid;
     grid-template-columns: repeat(10,1fr);
     grid-template-rows: repeat(10,1fr); 
+} */
+.block {
+    width: 80px;
+    height: 80px;
 }
 
-.space {
+/* .space {
     box-sizing: border-box;
     border: 1px solid #000;
-}
+} */
 
 a {
     text-decoration: none;

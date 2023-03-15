@@ -15,18 +15,16 @@
         <!-- animated cat logo -->
         <p>Welcome to BattleWitch! In this game you will cast spells and throw potions to reveal all of your opponet's witches. However, while playing you may encounter different potions and curses which may aid or hinder you in battle. Good luck and have fun!</p>
     </div>
-   
-    <div class="pbs" id="boardSingle">
+   <div id="game-info">
+    <p>Turn: <span id="whose-turn"></span></p>
+    <p>info: <span id="info"></span></p>
+   </div>
+    <div class="playingboard" id="playingBoard">
         <div id="offence"></div>
         <div id="defence"></div>
     </div>
     
-    <div class="options-container">
-        <div class="elder-container elderWitch" draggable="true"><img src="images\elder-witch.png" alt="elder-witch" ></div>
-        <div class="young-container youngWitch" draggable="true"><img src="images\young-witch.png" alt="young-witch" ></div>
-        <div class="adult-container adultWitch" draggable="true"><img src="images\adult-witch.png" alt="adult-witch" ></div>
-        <div class="cauldron-container cauldron" draggable="true"><img src="images\sr29a0499e8811d.png" alt="cauldron"></div>
-    </div>
+
    <div class="playing-buttons">
         <button id="randomize-button">Randomize</button>
         <button id="submit">Submit</button>
