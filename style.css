@@ -97,14 +97,14 @@ button {
     height: 15vh;
 }
 
+.cat {
+    width: 11vh;
+}
+
 .instructions p {
     color: white;
     text-indent: 1.5%;
     font-size: 1.3rem;
-}
-
-img {
-    width: 11vh;
 }
 
 .rules {
@@ -127,13 +127,28 @@ footer h4 {
     color: whitesmoke;
 }
 
-#options-container {
+/* #characters {
     position: absolute;
 }
 
-#cauldron-container,
-#young-container,
-#adult-container,
-#elder-container {
-    cursor: move;
+.c,
+.y,
+.a,
+.e {
+    width: 230px;
+    height: 230px;
+} */
+
+#customCursor {
+    --cursorXPos: 0;
+    --cursorYPos: 0;
+
+    transform: translate3d(var(--cursorXPos), var(--cursorYPos), 0);
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 2);
+
+    position: fixed;
+    top: -25px;
+    left: -25px;
+
+    width: 50px;
 }

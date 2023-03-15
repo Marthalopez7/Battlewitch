@@ -1,3 +1,21 @@
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener("mousemove", setMousePosition, false);
+
+function moveCursor(timestamp) {
+    customCursor.style.setProperty("--cursorXPos", mouseX + "px");
+    customCursor.style.setProperty("--cursorYPos", mouseY + "px");
+
+    requestAnimationFrame(moveCursor);
+}
+requestAnimationFrame(moveCursor);
+
+function setMousePosition(event){
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+}
+
 
 boardLayouts = [
     [
@@ -148,40 +166,39 @@ function displayBoards(player) {
 displayBoards(player1);
 
 
+dragElement(document.getElementById("characters"));
 
+// function dragElement(elmnt) {
+//   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+//   if (document.getElementById(elmnt.id + "characters")) {
+//     document.getElementById(elmnt.id + "characters").onmousedown = dragMouseDown;
+//   } else {
+//     elmnt.onmousedown = dragMouseDown;
+//   }
 
-dragElement(document.getElementById("options-container"));
+//   function dragMouseDown(e) {
+//     e = e || window.event;
+//     e.preventDefault();
+//     pos3 = e.clientX;
+//     pos4 = e.clientY;
+//     document.onmouseup = closeDragElement;
+//     document.onmousemove = elementDrag;
+//   }
 
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "options-container")) {
-    document.getElementById(elmnt.id + "options-container").onmousedown = dragMouseDown;
-  } else {
-    elmnt.onmousedown = dragMouseDown;
-  }
+//   function elementDrag(e) {
+//     e = e || window.event;
+//     e.preventDefault();
+//     pos1 = pos3 - e.clientX;
+//     pos2 = pos4 - e.clientY;
+//     pos3 = e.clientX;
+//     pos4 = e.clientY;
+//     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+//     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+//   }
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
-  }
+//   function closeDragElement() {
+//     document.onmouseup = null;
+//     document.onmousemove = null;
+//   }
+// }
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
