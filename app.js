@@ -21,6 +21,7 @@ function buildBoard(color, playerOne){
 buildBoard('#2D592C', 'player')
 buildBoard('#2D592C', 'computer')
 
+// creating witches and cauldron
 class witch {
     constructor(name, length) {
         this.name = name
@@ -36,27 +37,45 @@ const adultWitch = new witch('adultWitch', 2)
 const addWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch]
 
 function addWitch(witch) {
-    const playingBoardGrid = document.querySelector('#computer div')
+    const playingBoardGrid = document.querySelectorAll('#computer div')
     let randomBoolean = Math.random() < 0.5
-    let isHorizantal = randomBoolean
-    let randomStart = Math.floor(Math.random() * width * width)
-    console.log(randomStart)
+    let isHorizontal = randomBoolean
+    let randomStartIndex = Math.floor(Math.random() * width * width)
+  
+    let fixOverlap = isHorizontal ? randomStartIndex <= width * width - witch.length ? randomStartIndex : width * width - witch.length :
+    randomStartIndex <= width * width - width * witch.length ? randomStartIndex : randomStartIndex - witch.length * width + width
 
     let witchBlocks = []
-    for (let i = 0; 1 < witch.length; i++) {
-        if (isHorizantal) {
-            witchBlocks.push(playingBoardGrid[Number(randomStart) + i])
+
+    for (let i = 0; i < witch.length; i++) {
+        if (isHorizontal) {  
+            witchBlocks.push(playingBoardGrid[Number(fixOverlap) + i])
         } else {
-            witchBlocks.push(playingBoardGrid[Number(randomStart) + i * width])
+            witchBlocks.push(playingBoardGrid[Number(fixOverlap) + i * width])
         }
     }
-    console.log(witchBlocks)
-    witchBlocks.forEach(witchBlocks => {
+    let fix
+    if (isHorizontal) {
+    witchBlocks.every((_witchBlocks, index) => 
+        fix = witchBlocks[0].id % width !== width - (witchBlocks.length - (index + 1)))
+    } else {
+        witchBlocks.every((_witchBlocks, index) =>
+        fix = witchBlocks[0].id < 90 + (width * index + 1) )
+    }
+ 
+    const empty = witchBlocks.every(witchBlocks => !witchBlocks.classList.contains('taken'))
+    if (fix && empty) {
+        witchBlocks.forEach(witchBlocks => {
         witchBlocks.classList.add(witch.name)
         witchBlocks.classList.add('taken')
-    })
+        })
+    } else {
+        addWitch(witch)
+    }
+   
+   
 }
-addWitch(elderWitch)
+addWitchCharacters.forEach(witch => addWitch(witch))
 // boardLayouts = [
 //     [
 //         [0,0,0,0,0,0,0,0,0,0],
