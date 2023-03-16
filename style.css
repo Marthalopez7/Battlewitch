@@ -127,28 +127,19 @@ footer h4 {
     color: whitesmoke;
 }
 
-/* #characters {
-    position: absolute;
-}
-
-.c,
-.y,
-.a,
-.e {
-    width: 230px;
-    height: 230px;
-} */
-
 #customCursor {
+    user-select: none;
+    pointer-events: none;
     --cursorXPos: 0;
     --cursorYPos: 0;
 
     transform: translate3d(var(--cursorXPos), var(--cursorYPos), 0);
-    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 2);
+    transition: transform 3s cubic-bezier(0.175, 0.885, 0.32, 2);
 
     position: fixed;
     top: -25px;
     left: -25px;
 
     width: 50px;
+    filter: drop-shadow(0px 2px 7px);
 }
