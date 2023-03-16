@@ -6,24 +6,72 @@
 }
 
 .options-container {
-    width: 500px;
+    width: 200px;
     height: 200px;
+    display: flex;
+    flex-wrap: wrap ;
     background-color: #392c59;
     margin: 2%;
 }
 
-.elder-container {
-    width: 160px;
-    height: 160px;
-    margin: 10px;
+.elder {
+    background-color: #A78EB8;
 }
 
-.playingboard {
+.elder-Witch {
+    width: 80px;
+    height: 40px;
+    margin: 3px;
+}
+
+.cauldron {
+    width: 80px;
+    height: 40px;
+    margin: 3px;
+}
+
+.caul {
+    background-color: #2E2E2E;
+}
+
+.young-Witch {
+    width: 80px;
+    height: 40px;
+    margin: 3px;
+}
+
+.young {
+    background-color: #644B77;
+}
+
+.adult-Witch {
+    width: 80px;
+    height: 40px;
+    margin: 3px;
+}
+
+.adult {
+    background-color: #FABB63;
+}
+
+.playing-board {
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#playingBoard {
     display: flex;
     justify-content: space-evenly;
-    padding: 1.5%;
 }
 
+.block {
+    width: 80px;
+    height: 20px;
+    border: solid 1px black;
+    box-sizing: border-box;
+}
 
 body {
     background-color: #2E2E2E;
@@ -38,15 +86,11 @@ body {
 .playing-buttons {
     display: flex;
     justify-content: space-evenly;
+    margin: 1%;
 }
 
 #game-info {
     color: whitesmoke;
-}
-
-#playingBoard {
-    width: 800px;
-    height: 800px;
 }
 
 /* 

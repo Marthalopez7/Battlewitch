@@ -1,16 +1,62 @@
-const playingBoard = document.querySelector('.playingboard')
+const playingBoardcontainer = document.querySelector('#playingBoard')
 // const pbm= document.getElementById("playingBoard")
 // const startButton = document.getElementById('start')
 
 const width = 10
 
-function buildBoard(){
-    const playingBoardF = document.createElement('div')
-    playingBoardF.classList.add('playing-board')
-    playingBoardF.style.backgroundColor = ('#2D592C')
-}
-buildBoard()
+function buildBoard(color, playerOne){
+    const playingBoard = document.createElement('div')
+    playingBoard.classList.add('playing-board')
+    playingBoard.style.backgroundColor = color
+    playingBoard.id = playerOne
 
+    for (let i = 0; i < width * width; i++) {
+        const block = document.createElement('div')
+        block.classList.add('block')
+        block.id = i
+        playingBoard.append(block)
+    }
+    playingBoardcontainer.append(playingBoard)
+}
+buildBoard('#2D592C', 'player')
+buildBoard('#2D592C', 'computer')
+
+class witch {
+    constructor(name, length) {
+        this.name = name
+        this.length = length
+    }
+}
+
+const cauldron = new witch('cauldron', 1)
+const elderWitch = new witch('elderWitch', 2)
+const youngWitch = new witch('youngWitch', 1)
+const adultWitch = new witch('adultWitch', 2)
+
+const addWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch]
+
+function addWitch(witch) {
+    const playingBoardGrid = document.querySelector('#computer div')
+    let randomBoolean = Math.random() < 0.5
+    let isHorizantal = randomBoolean
+    let randomStart = Math.floor(Math.random() * width * width)
+    console.log(randomStart)
+
+    let witchBlocks = []
+    for (let i = 0; 1 < witch.length; i++) {
+        if (isHorizantal) {
+            witchBlocks.push(playingBoardGrid[Number(randomStart) + i])
+        } else {
+            witchBlocks.push(playingBoardGrid[Number(randomStart) + i * width])
+        }
+    }
+    console.log(witchBlocks)
+    witchBlocks.forEach(witchBlocks => {
+        witchBlocks.classList.add(witch.name)
+        witchBlocks.classList.add('taken')
+    })
+}
+addWitch(elderWitch)
 // boardLayouts = [
 //     [
 //         [0,0,0,0,0,0,0,0,0,0],
