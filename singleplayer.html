@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BattleWitch</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        let gameMode = 'singlePlayer'
-    </script>
+    <script src="./main.js" defer></script>
 </head>
 <div class="hero">
 </div>
@@ -26,18 +24,14 @@
             </section>
         </section>
 
-        <section class="content-active">
-            <div class="container1">
-                <h3>Your board</h3>
-                <div class="board" id="board2"></div>
-                <div class="board-buttons"></div>
-                <div class="ships"></div>
-            </div>
-            <div class="container2">
-              <h3>Enemy's board</h3>
-              <div class="board notStarted" id="board1"></div>
-            </div>
-        </section>
+        <div class="pbs" id="playingBoard">
+            <div id="offence"></div>
+            <div id="defence"></div>
+        </div>
+        <div class="container">
+            <button id="randomize">Randomize</button>        
+            <button id="submit">Submit</button>          
+        </div>
        
         <section class="rules">
             <h3>How to play</h3>

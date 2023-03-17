@@ -90,6 +90,50 @@ footer h4 {
     color: whitesmoke;
 }
 
+.playing-board {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1.5%;
+}
+
+.pbs {
+    display: flex;
+    align-content: center;
+    margin-left: 6%;
+}
+
+.pbm {
+    display: flex;
+    align-content: center;
+    margin-left: 6%;
+}
+
+#offence {
+    width: 800px;
+    height: 800px;
+    background-color: #2D592C;
+    margin: 2%;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr); 
+}
+
+#defence {
+    width: 800px;
+    height: 800px;
+    background-color: #2D592C;
+    margin: 2%;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr); 
+}
+
+.space {
+    box-sizing: border-box;
+    border: 1px solid #000;
+}
+
+
 #customCursor {
     user-select: none;
     pointer-events: none;
