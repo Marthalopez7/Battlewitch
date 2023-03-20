@@ -94,15 +94,14 @@ allWitchCharacters.forEach(witch => addWitch('computer', witch))
 
 // draggable witches
 let draggedWitch
-const optionWitch = Array.from(optionsContainer.children)
-optionWitch.forEach(optionWitch => optionWitch.addEventListener("dragStart", dragStart))
+const optionWitchArray = Array.from(optionsContainer.children)
+optionWitchArray.forEach(optionWitch => optionWitch.addEventListener('dragstart', dragStart))
 
 const allPlayerSquares = document.querySelectorAll('#player div')
 allPlayerSquares.forEach(playerBlock => {
     playerBlock.addEventListener('dragover', dragOver)
     playerBlock.addEventListener('drop', dropWitch)
 })
-
 
 function dragStart(e){
     notDropped = false
