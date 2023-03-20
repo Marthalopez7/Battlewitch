@@ -72,12 +72,6 @@
     box-sizing: border-box;
 }
 
-#computer .elder,
-#computer .caul,
-#computer .young,
-#computer .adult {
-    background-color: #2D592C;
-}
 
 
 .hit {
@@ -98,7 +92,7 @@ body {
     padding: 2%;
     margin: 2%;
 }
-.playing-buttons {
+button {
     display: flex;
     justify-content: space-evenly;
     margin: 1%;

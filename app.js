@@ -55,12 +55,12 @@ function addWitch(user, witch, startId) {
     let isHorizontal = user === 'player' ?  angle === 0 : randomBoolean
     let randomStartIndex = Math.floor(Math.random() * width * width)
     let startIndex = startId ? startId : randomStartIndex
-    let gridBorder = isHorizontal ? startIndex <= width * width - witch.length ? startIndex : width * width - witch.length :
-    startIndex <= width * width - width * witch.length ? startIndex : startIndex - witch.length * width + width
+    let gridBorder = isHorizontal ? startIndex <= width * width - Witch.length ? startIndex : width * width - Witch.length :
+    startIndex <= width * width - width * Witch.length ? startIndex : startIndex - Witch.length * width + width
 
     let witchBlocks = []
 
-    for (let i = 0; i < witch.length; i++) {
+    for (let i = 0; i < Witch.length; i++) {
         if (isHorizontal) {  
             witchBlocks.push(allGridsqaures[Number(gridBorder) + i])
         } else {
@@ -80,7 +80,7 @@ function addWitch(user, witch, startId) {
     const empty = witchBlocks.every(witchBlocks => !witchBlocks.classList.contains('taken'))
     if (fix && empty) {
         witchBlocks.forEach(witchBlocks => {
-        witchBlocks.classList.add(witch.name)
+        witchBlocks.classList.add(Witch.name)
         witchBlocks.classList.add('taken')
         })
     } else {
@@ -121,42 +121,44 @@ function dropWitch(e) {
         draggedWitch.remove()
     }
 }
-sumbitButton.addEventListener('click', startGame)
+
 
 let gameOver = false
 let playerTurn
 
 function startGame() {
     if (playerTurn === undefined) {
-        if (optionContainer.children.length != 0) {
+        if (optionsContainer.children.length != 0) {
         infoDisplay.textContent = "Place all witches on board"
     } else {
-        const allGridsqaures = document.querySelectorAll("#computer div")
-        allGridsqaures.forEach(block => block.addEventListener('click', handleClick))
+        const computerSqaures = document.querySelectorAll("#computer div")
+        computerSqaures.forEach(block => block.addEventListener('click', handleClick))
         playerTurn = true
         turnDisplay.textContent = 'Your turn'
         infoDisplay.textContent = 'Begin your battle'
     }
     }   
 }
+sumbitButton.addEventListener('click', startGame)
 
 let playerHits = []
 let computerHits = []
 const playerDedWitch = []
 const opponentDedWitch = []
+
 function handleClick(e) {
     if (!gameOver) {
         if(e.target.classList.contains('taken')) {
             e.target.classList.add('hit')
-            infoDisplay.textContent = "You hit an opponent's ship!"
+            infoDisplay.textContent = "You hit an opponent's witch!"
             let classes = Array.from(e.target.classList)
-            classes.filter(className => className !== 'block')
-            classes.filter(className => className !== 'hit')
-            classes.filter(className => className !== 'taken')
+           classes = classes.filter(className => className !== 'block')
+           classes =classes.filter(className => className !== 'hit')
+           classes = classes.filter(className => className !== 'taken')
             playerHits.push(...classes)
             checkWitches('player', playerHits, playerDedWitch)
         }
-        if (e.target.classList.contain('taken')) {
+        if (!e.target.classList.contains('taken')) {
             infoDisplay.textContent = 'Miss!'
             e.target.classList.add('nothing')
         }
@@ -170,7 +172,7 @@ function handleClick(e) {
 function opponetsturn() {
     if (!gameOver) {
         turnDisplay.textContent = "Opponent's turn..."
-        turnDisplay.textContent = "Opponent launching potion..."
+        infoDisplay.textContent = "Opponent launching potion..."
         setTimeout(() => {
             let randomturn = Math.floor(Math.random() * width * width)
             const allGridsqaures = document.querySelectorAll('#player div')
@@ -187,14 +189,14 @@ function opponetsturn() {
                 allGridsqaures[randomturn].classList.add('hit')
                 infoDisplay.textContent = "Opponet hit a witch!"
                 let classes = Array.from(allGridsqaures[randomturn].classList)
-                classes.filter(className => className !== 'block')
-                classes.filter(className => className !== 'hit')
-                classes.filter(className => className !== 'taken')
+                classes = classes.filter(className => className !== 'block')
+                classes = classes.filter(className => className !== 'hit')
+                classes = classes.filter(className => className !== 'taken')
                 computerHits.push(...classes)
                 checkWitches('computer', computerHits, opponentDedWitch)
             } else {
-                infoDisplay.textContent ='Miss'
-                allGridsqaures[randomturn].classList.add('empty')
+                infoDisplay.textContent ='Miss!'
+                allGridsqaures[randomturn].classList.add('nothing')
             }          
         }, 2000)
         setTimeout(() => {
@@ -207,18 +209,21 @@ function opponetsturn() {
     }
 }
 
-function checkWitches(user, userHits, userDedWitch) {
+function checkWitches(user, playerHits, playerDedWitch) {
+
     function checkWitchType(witchName, witchLength) {
-        if (userHits.filter(storedWitchName => storedWitchName === witchName).length === witchLength) {
+    
+        if (playerHits.filter(storedWitchName => storedWitchName === witchName).length === witchLength) {
             infoDisplay.textContent =`You revealed your opponent's ${witchName}`
-            if (user === 'player') {
-                playerHits = userHits.filter(storedWitchName => storedWitchName !== witchName)
-            }
-            if (user === 'computer') {
+        }
+        if (user === 'player') {
+                playerHits = playerHits.filter(storedWitchName => storedWitchName !== witchName)
+        }
+        if (user === 'computer') {
                 infoDisplay.textContent =`Your opponent hit your ${witchName}`
-                computerHits = userHits.filter(storedWitchName => storedWitchName !== witchName)
-            }
-            userDedWitch.push(witchName)
+                computerHits = playerHits.filter(storedWitchName => storedWitchName !== witchName)
+         }
+        playerDedWitch.push(witchName)
         }
     }
     checkWitchType('caul', 1)
@@ -228,12 +233,11 @@ function checkWitches(user, userHits, userDedWitch) {
     console.log("playerHits", playerHits)
     console.log("playerDedWitch", playerDedWitch)
 
-    if (playerDedWitch.length === 4) {
+    if (playerDedWitch.length === 2) {
         infoDisplay.textContent = 'All enemy witches revealed, you win!'
         gameOver = true
     }
-    if(opponentDedWitch.length === 4) {
+    if(opponentDedWitch.length === 2) {
         infoDisplay.textContent = 'All your witches have been revealed, you lose. Do better.'
         gameOver = true
     }
-}
