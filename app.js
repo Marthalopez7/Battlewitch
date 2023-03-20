@@ -262,4 +262,3 @@ function checkWitches(user, userHits, userDedWitch) {
         gameOver = true
     }
 
-    const newGame = document.querySelector('#refresh-button')

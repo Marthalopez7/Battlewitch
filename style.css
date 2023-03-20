@@ -143,6 +143,7 @@ button {
 
 #game-info {
     color: whitesmoke;
+    margin: 2%;
 }
 
 
@@ -185,7 +186,10 @@ button {
     padding: 1%;
     text-shadow: black 1.5px 1.5px;
     font-weight: 600;
+    margin: 2%;
 }
+
+
 
 .cat-inst {
     display: flex;
