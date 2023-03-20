@@ -16,6 +16,22 @@ function setMousePosition(event){
     mouseY = event.clientY;
 }
 
+const playingBoardcontainer = document.querySelector('#playingBoard')
+const optionsContainer = document.querySelector('#options-container')
+const rotateButton = document.querySelector('#rotate-button')
+const sumbitButton = document.querySelector('#submit')
+const infoDisplay = document.querySelector("#info")
+const turnDisplay = document.querySelector("#whose-turn")
+
+let angle = 0
+function rotate() {
+    const rotateWitch = Array.from(optionsContainer.children)
+    angle = angle === 0 ? 90 : 0
+    rotateWitch.forEach(rotateWitch => rotateWitch.style.transform = `rotate(${angle}deg)`)
+}
+
+rotateButton.addEventListener('click', rotate)
+
 const width = 10
 
 function buildBoard(color, user){
