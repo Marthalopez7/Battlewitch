@@ -23,6 +23,7 @@ const sumbitButton = document.querySelector('#submit')
 const infoDisplay = document.querySelector("#info")
 const turnDisplay = document.querySelector("#whose-turn")
 
+// roatates the witches in the option container to 90 then back to 0 then 90
 let angle = 0
 function rotate() {
     const rotateWitch = Array.from(optionsContainer.children)
@@ -32,6 +33,8 @@ function rotate() {
 
 rotateButton.addEventListener('click', rotate)
 
+
+// buildboards function
 const width = 10
 
 function buildBoard(color, user){
@@ -67,6 +70,7 @@ const catWitch = new Witch('cat', 5)
 
 const allWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch, catWitch]
 let notDropped
+
 // ai 
 function addWitch(user, witch, startId) {
     const allGridsqaures = document.querySelectorAll(`#${user} div`)
@@ -141,7 +145,7 @@ function dropWitch(e) {
     }
 }
 
-
+// start game function 
 let gameOver = false
 let playerTurn
 
@@ -160,6 +164,7 @@ function startGame() {
 }
 sumbitButton.addEventListener('click', startGame)
 
+// gets the info for the game (which sqaure they click) if its a hit or mis 
 let playerHits = []
 let computerHits = []
 const playerDedWitch = []
@@ -188,6 +193,7 @@ function handleClick(e) {
     }
 }
 
+// runs computer turn (gives it two turns to try )
 function opponetsturn() {
     if (!gameOver) {
         turnDisplay.textContent = "Opponent's turn..."
@@ -228,6 +234,7 @@ function opponetsturn() {
     }
 }
 
+// this should check the number of witches hit from the playerHits and computerHits but idk if its working :( 
 function checkWitches(user, userHits, userDedWitch) {
 
     function checkWitchType(witchName, witchLength) {
@@ -261,4 +268,4 @@ function checkWitches(user, userHits, userDedWitch) {
         infoDisplay.textContent = 'All your witches have been revealed, you lose. Do better.'
         gameOver = true
     }
-
+// game not stopping
