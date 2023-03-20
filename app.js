@@ -63,8 +63,9 @@ const cauldron = new Witch('caul', 1)
 const elderWitch = new Witch('elder', 4)
 const youngWitch = new Witch('young', 2)
 const adultWitch = new Witch('adult', 3)
+const catWitch = new Witch('cat', 5)
 
-const allWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch]
+const allWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch, catWitch]
 let notDropped
 // ai 
 function addWitch(user, witch, startId) {
@@ -227,35 +228,38 @@ function opponetsturn() {
     }
 }
 
-function checkWitches(user, playerHits, playerDedWitch) {
+function checkWitches(user, userHits, userDedWitch) {
 
     function checkWitchType(witchName, witchLength) {
     
-        if (playerHits.filter(storedWitchName => storedWitchName === witchName).length === witchLength) {
+        if (userHits.filter(storedWitchName => storedWitchName === witchName).length === witchLength) {
             infoDisplay.textContent =`You revealed your opponent's ${witchName}`
         }
         if (user === 'player') {
-                playerHits = playerHits.filter(storedWitchName => storedWitchName !== witchName)
+                playerHits = userHits.filter(storedWitchName => storedWitchName !== witchName)
         }
         if (user === 'computer') {
                 infoDisplay.textContent =`Your opponent hit your ${witchName}`
                 computerHits = playerHits.filter(storedWitchName => storedWitchName !== witchName)
          }
-        playerDedWitch.push(witchName)
+        userDedWitch.push(witchName)
         }
     }
     checkWitchType('caul', 1)
     checkWitchType('elder', 4)
     checkWitchType('young', 2)
     checkWitchType('adult', 3)
+    checkWitchType('cat', 5)
     console.log("playerHits", playerHits)
     console.log("playerDedWitch", playerDedWitch)
 
-    if (playerDedWitch.length === 2) {
+    if (playerDedWitch.length === 5) {
         infoDisplay.textContent = 'All enemy witches revealed, you win!'
         gameOver = true
     }
-    if(opponentDedWitch.length === 2) {
+    if(opponentDedWitch.length === 5) {
         infoDisplay.textContent = 'All your witches have been revealed, you lose. Do better.'
         gameOver = true
     }
+
+    const newGame = document.querySelector('#refresh-button')

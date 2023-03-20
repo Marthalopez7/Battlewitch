@@ -39,6 +39,10 @@
     background-color: #FABB63;
 }
 
+.cat {
+    background-color: beige;
+}
+
 /* Witces container size */
 .cauldron {
     width: 80px;
@@ -61,6 +65,10 @@
     height: 40px;
 }
 
+.cat-witch {
+    width: 40px;
+    height: 40px;
+}
 /* board ai and user color and size */
 .playing-board {
     width: 800px;
@@ -82,6 +90,32 @@
 }
 
 
+#computer .elder,
+#computer .caul,
+#computer .young,
+#computer .adult {
+    background-color: #2D592C;
+}
+
+#player .elder {
+    background-color: #A78EB8;
+}
+
+#player .caul {
+    background-color: #2E2E2E;
+}
+
+#player .young{
+    background-color: #644B77;
+}
+
+#player .adult {
+    background-color: #FABB63;
+}
+
+#player .cat {
+    background-color: beige;
+}
 
 .hit {
     background-color: darkred !important;
@@ -117,7 +151,7 @@ button {
     height: 80px;
 }
 
-
+#computer 
 
 a {
     text-decoration: none;
@@ -189,49 +223,6 @@ footer {
 footer h4 {
     text-align: right;
     color: whitesmoke;
-}
-
-.playing-board {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1.5%;
-}
-
-.pbs {
-    display: flex;
-    align-content: center;
-    margin-left: 6%;
-}
-
-.pbm {
-    display: flex;
-    align-content: center;
-    margin-left: 6%;
-}
-
-#offence {
-    width: 800px;
-    height: 800px;
-    background-color: #2D592C;
-    margin: 2%;
-    display: grid;
-    grid-template-columns: repeat(10,1fr);
-    grid-template-rows: repeat(10,1fr); 
-}
-
-#defence {
-    width: 800px;
-    height: 800px;
-    background-color: #2D592C;
-    margin: 2%;
-    display: grid;
-    grid-template-columns: repeat(10,1fr);
-    grid-template-rows: repeat(10,1fr); 
-}
-
-.space {
-    box-sizing: border-box;
-    border: 1px solid #000;
 }
 
 
