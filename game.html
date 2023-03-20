@@ -23,16 +23,24 @@
                 <p>Welcome to BattleWitch! In this game you will throw potions to reveal all of your opponet's witches and cauldrons. However, while playing you may encounter different potions which may aid or hinder your battle. Good luck and have fun!</p>
             </section>
         </section>
+        <div id="game-info">
+            <p>Turn: <span id="whose-turn"></span></p>
+            <p>Messages: <span id="info"></span></p>
+           </div>
+         
+        <div class="playingboard" id="playingBoard">
 
-        <div class="pbm" id="playingBoard">
-            <div id="offence"></div>
-            <div id="defence"></div>
-        </div>
-        <div class="container">
-            <button id="randomize">Randomize</button>        
-            <button id="submit">Submit</button>          
         </div>
 
+        <div id="options-container">
+            <div class="type elder-witch elder" draggable="true"><div id="elder-0"></div></div>
+            <div class="type cauldron caul" draggable="true"><div id="cauldron-1"></div></div>
+            <div class="type young-witch young" draggable="true"><div id="young-2"></div></div>
+            <div class="type adult-witch adult" draggable="true"><div id="adult-3"></div></div>
+        </div>
+
+        <button id="rotate-button">Rotate</button>
+        <button id="submit">Submit</button>
         <section class="rules">
             <h3>How to play</h3>
             <ol>
@@ -60,7 +68,6 @@
                 </p>
             </ol>
         </section>
-    </main>
     <footer>
         <audio id="sound" src="sounds/background-music.mp3" autoplay="0" autostart="0"></audio>
         <button onclick="playAud()" type="button">Play</button>
