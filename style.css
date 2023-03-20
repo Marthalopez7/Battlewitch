@@ -39,6 +39,10 @@
     background-color: #FABB63;
 }
 
+.cat {
+    background-color: beige;
+}
+
 /* Witces container size */
 .cauldron {
     width: 80px;
@@ -61,6 +65,10 @@
     height: 40px;
 }
 
+.cat-witch {
+    width: 40px;
+    height: 40px;
+}
 /* board ai and user color and size */
 .playing-board {
     width: 800px;
@@ -79,6 +87,34 @@
     height: 20px;
     border: solid 1px black;
     box-sizing: border-box;
+}
+
+
+#computer .elder,
+#computer .caul,
+#computer .young,
+#computer .adult {
+    background-color: #2D592C;
+}
+
+#player .elder {
+    background-color: #A78EB8;
+}
+
+#player .caul {
+    background-color: #2E2E2E;
+}
+
+#player .young{
+    background-color: #644B77;
+}
+
+#player .adult {
+    background-color: #FABB63;
+}
+
+#player .cat {
+    background-color: beige;
 }
 
 .hit {
@@ -106,6 +142,7 @@ button {
 
 #game-info {
     color: whitesmoke;
+    margin: 2%;
 }
 
 
@@ -114,7 +151,7 @@ button {
     height: 80px;
 }
 
-
+#computer 
 
 a {
     text-decoration: none;
@@ -148,7 +185,10 @@ button {
     padding: 1%;
     text-shadow: black 1.5px 1.5px;
     font-weight: 600;
+    margin: 2%;
 }
+
+
 
 .cat-inst {
     display: flex;
