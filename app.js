@@ -1,21 +1,40 @@
+// custom cursor
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener("mousemove", setMousePosition, false);
+
+function moveCursor(timestamp) {
+    customCursor.style.setProperty("--cursorXPos", mouseX + "px");
+    customCursor.style.setProperty("--cursorYPos", mouseY + "px");
+
+    requestAnimationFrame(moveCursor);
+}
+requestAnimationFrame(moveCursor);
+
+function setMousePosition(event){
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+}
+
 const playingBoardcontainer = document.querySelector('#playingBoard')
 const optionsContainer = document.querySelector('#options-container')
 const rotateButton = document.querySelector('#rotate-button')
 const sumbitButton = document.querySelector('#submit')
 const infoDisplay = document.querySelector("#info")
 const turnDisplay = document.querySelector("#whose-turn")
+const width = 10
 
+// roatates the witches in the option container to 90 then back to 0 then 90
 let angle = 0
 function rotate() {
     const rotateWitch = Array.from(optionsContainer.children)
     angle = angle === 0 ? 90 : 0
     rotateWitch.forEach(rotateWitch => rotateWitch.style.transform = `rotate(${angle}deg)`)
 }
-
 rotateButton.addEventListener('click', rotate)
 
-const width = 10
-
+// buildboards function
 function buildBoard(color, user){
     const playingBoard = document.createElement('div')
     playingBoard.classList.add('playing-board')
@@ -40,23 +59,73 @@ class Witch {
         this.length = length
     }
 }
+// const witchArray = [
+//     {
+//         name: 'elder', 
+//         img: 'images\elder-witch.png',
+//         rows: 2,
+//         cols: 2
+//     },
+//     {
+//         name: 'caul', 
+//         img: 'images\cauldron.png',
+//         rows: 2,
+//         cols: 2
+//     },
+//     {
+//         name: 'young', 
+//         img: 'images\young-witch.png',
+//         rows: 2,
+//         cols: 2
+//     },
+//     {
+//         name: 'adult', 
+//         img: 'images\adult-witch.png',
+//         rows: 2,
+//         cols: 2
+//     },
+//     {
+//         name: 'cat', 
+//         img: 'images\cat-mascot.png',
+//         rows: 2,
+//         cols: 2
+//     },
+// ];
 
 const cauldron = new Witch('caul', 1)
 const elderWitch = new Witch('elder', 4)
 const youngWitch = new Witch('young', 2)
 const adultWitch = new Witch('adult', 3)
+const catWitch = new Witch('cat', 5)
 
-const allWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch]
+const witchContainer = [cauldron, elderWitch, youngWitch, adultWitch, catWitch]
+
+// const cauldronExplosion = cauldronEvent()
+
+// function cauldronEvent() {
+
+// }
+
+// switch cauldronExplosion() {
+
+// }
+
 let notDropped
-// ai 
+
+// add witchcharacters to board randomly 
+// function addWitch(witch) {
+//     let randomDirection = Math.floor(Math.random() * witch.rows.cols.length)
+//     let present = witch.rows.cols[randomDirection]
+//     if (randomDirection === 0) 
+// }
 function addWitch(user, witch, startId) {
     const allGridsqaures = document.querySelectorAll(`#${user} div`)
     let randomBoolean = Math.random() < 0.5
     let isHorizontal = user === 'player' ?  angle === 0 : randomBoolean
     let randomStartIndex = Math.floor(Math.random() * width * width)
     let startIndex = startId ? startId : randomStartIndex
-    let gridBorder = isHorizontal ? startIndex <= width * width - Witch.length ? startIndex : width * width - Witch.length :
-    startIndex <= width * width - width * Witch.length ? startIndex : startIndex - Witch.length * width + width
+    let gridBorder = isHorizontal ? startIndex <= width * width - Witch.Length ? startIndex : width * width - Witch.Length:
+    startIndex <= width * width - width * Witch.Length ? startIndex : startIndex - Witch.Length * width + width
 
     let witchBlocks = []
 
@@ -70,18 +139,19 @@ function addWitch(user, witch, startId) {
 
     let fix
     if (isHorizontal) {
-    witchBlocks.every((_witchBlocks, index) => 
+    witchBlocks.every((index) => 
         fix = witchBlocks[0].id % width !== width - (witchBlocks.length - (index + 1)))
     } else {
         witchBlocks.every((_witchBlocks, index) =>
         fix = witchBlocks[0].id < 90 + (width * index + 1) )
     }
- 
+        
     const empty = witchBlocks.every(witchBlocks => !witchBlocks.classList.contains('taken'))
     if (fix && empty) {
         witchBlocks.forEach(witchBlocks => {
-        witchBlocks.classList.add(Witch.name)
+        witchBlocks.classList.add('witchName')
         witchBlocks.classList.add('taken')
+        witchBlocks.classList.add('type')
         })
     } else {
         if (user === 'computer') addWitch('computer', witch, startId);
@@ -90,7 +160,39 @@ function addWitch(user, witch, startId) {
    
   
 }
-allWitchCharacters.forEach(witch => addWitch('computer', witch))
+witchContainer.forEach(witch => addWitch('computer', witch))
+
+const potionArray {
+    {
+        name: 'test1',
+        effect: '',
+        img: ''
+    },
+    {
+        name: 'test2',
+        effect: ''
+    },
+    {
+        name: 'test3',
+        effect: ''
+    },
+    {
+        name: 'test4',
+        effect: ''
+    },
+    {
+        name: 'test5',
+        effect: ''
+    },
+    {
+        name: 'test6',
+        effect: ''
+    },
+}
+
+function potionEvent(potionArray) {
+    
+}
 
 // draggable witches
 let draggedWitch
@@ -115,14 +217,14 @@ function dragOver(e) {
 
 function dropWitch(e) {
     const startId = e.target.id
-    const witch = allWitchCharacters[draggedWitch.id]
+    const witch = witchContainer[draggedWitch.id]
     addWitch('player', witch, startId)
     if(!notDropped) {
         draggedWitch.remove()
     }
 }
 
-
+// start game function 
 let gameOver = false
 let playerTurn
 
@@ -141,6 +243,7 @@ function startGame() {
 }
 sumbitButton.addEventListener('click', startGame)
 
+// gets the info for the game (which sqaure they click) if its a hit or mis 
 let playerHits = []
 let computerHits = []
 const playerDedWitch = []
@@ -156,12 +259,12 @@ function handleClick(e) {
            classes =classes.filter(className => className !== 'hit')
            classes = classes.filter(className => className !== 'taken')
             playerHits.push(...classes)
-            checkWitches('player', playerHits, playerDedWitch)
+            checkWitchDed('player', playerHits, playerDedWitch)
         }
         if (!e.target.classList.contains('taken')) {
             infoDisplay.textContent = 'Miss!'
             e.target.classList.add('nothing')
-        }
+        } 
         playerTurn = false
        const allGridsqaures = document.querySelectorAll('#computer div')
        allGridsqaures.forEach(block => block.replaceWith(block.cloneNode(true)))
@@ -169,6 +272,7 @@ function handleClick(e) {
     }
 }
 
+// runs computer turn (gives it two turns to try )
 function opponetsturn() {
     if (!gameOver) {
         turnDisplay.textContent = "Opponent's turn..."
@@ -192,8 +296,9 @@ function opponetsturn() {
                 classes = classes.filter(className => className !== 'block')
                 classes = classes.filter(className => className !== 'hit')
                 classes = classes.filter(className => className !== 'taken')
+        
                 computerHits.push(...classes)
-                checkWitches('computer', computerHits, opponentDedWitch)
+                checkWitchesDed('computer', computerHits, opponentDedWitch)
             } else {
                 infoDisplay.textContent ='Miss!'
                 allGridsqaures[randomturn].classList.add('nothing')
@@ -209,35 +314,38 @@ function opponetsturn() {
     }
 }
 
-function checkWitches(user, playerHits, playerDedWitch) {
+// this should check the number of witches hit from the playerHits and computerHits and end game 
+function checkWitchesDed(user, userHits, userDedWitch) {
 
-    function checkWitchType(witchName, witchLength) {
+    function checkWitch(witchName, witchLength) {
     
-        if (playerHits.filter(storedWitchName => storedWitchName === witchName).length === witchLength) {
+        if (userHits.filter(storedWitchName => storedWitchName === witchName).length === witchLength) {
             infoDisplay.textContent =`You revealed your opponent's ${witchName}`
         }
         if (user === 'player') {
-                playerHits = playerHits.filter(storedWitchName => storedWitchName !== witchName)
+                playerHits = userHits.filter(storedWitchName => storedWitchName !== witchName)
         }
         if (user === 'computer') {
                 infoDisplay.textContent =`Your opponent hit your ${witchName}`
                 computerHits = playerHits.filter(storedWitchName => storedWitchName !== witchName)
          }
-        playerDedWitch.push(witchName)
+        userDedWitch.push(witchName)
         }
-    }
-    checkWitchType('caul', 1)
-    checkWitchType('elder', 4)
-    checkWitchType('young', 2)
-    checkWitchType('adult', 3)
+    checkWitch('caul', 1)
+    checkWitch('elder', 4)
+    checkWitch('young', 2)
+    checkWitch('adult', 3)
+    checkWitch('cat', 5)
     console.log("playerHits", playerHits)
     console.log("playerDedWitch", playerDedWitch)
 
-    if (playerDedWitch.length === 2) {
+    if (playerDedWitch.length === 5) {
         infoDisplay.textContent = 'All enemy witches revealed, you win!'
         gameOver = true
     }
-    if(opponentDedWitch.length === 2) {
+    if(opponentDedWitch.length === 5) {
         infoDisplay.textContent = 'All your witches have been revealed, you lose. Do better.'
         gameOver = true
     }
+}
+    
