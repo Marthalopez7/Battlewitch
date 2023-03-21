@@ -1,3 +1,4 @@
+//custom cursor
 let mouseX = 0;
 let mouseY = 0;
 
@@ -71,7 +72,7 @@ const catWitch = new Witch('cat', 5)
 const allWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch, catWitch]
 let notDropped
 
-// ai 
+// add witch characters to board randomly 
 function addWitch(user, witch, startId) {
     const allGridsqaures = document.querySelectorAll(`#${user} div`)
     let randomBoolean = Math.random() < 0.5
@@ -103,15 +104,16 @@ function addWitch(user, witch, startId) {
     const empty = witchBlocks.every(witchBlocks => !witchBlocks.classList.contains('taken'))
     if (fix && empty) {
         witchBlocks.forEach(witchBlocks => {
-        witchBlocks.classList.add(Witch.name)
+        witchBlocks.classList.add('witchName')
         witchBlocks.classList.add('taken')
+        witchBlocks.classList.add("type")
         })
     } else {
         if (user === 'computer') addWitch('computer', witch, startId);
         if (user === 'player') notDropped = true
     }
-   
   
+
 }
 allWitchCharacters.forEach(witch => addWitch('computer', witch))
 
@@ -185,6 +187,8 @@ function handleClick(e) {
         if (!e.target.classList.contains('taken')) {
             infoDisplay.textContent = 'Miss!'
             e.target.classList.add('nothing')
+            let classes = Array.from(e.target.classList)
+           classes = classes.filter(className => className !== 'nothing')
         }
         playerTurn = false
        const allGridsqaures = document.querySelectorAll('#computer div')
@@ -235,7 +239,13 @@ function opponetsturn() {
 }
 
 // this should check the number of witches hit from the playerHits and computerHits but idk if its working :( 
+
 function checkWitches(user, userHits, userDedWitch) {
+    checkWitchType('caul', 1)
+    checkWitchType('elder', 4)
+    checkWitchType('young', 2)
+    checkWitchType('adult', 3)
+    checkWitchType('cat', 5)
 
     function checkWitchType(witchName, witchLength) {
     
@@ -250,13 +260,8 @@ function checkWitches(user, userHits, userDedWitch) {
                 computerHits = playerHits.filter(storedWitchName => storedWitchName !== witchName)
          }
         userDedWitch.push(witchName)
-        }
     }
-    checkWitchType('caul', 1)
-    checkWitchType('elder', 4)
-    checkWitchType('young', 2)
-    checkWitchType('adult', 3)
-    checkWitchType('cat', 5)
+}
     console.log("playerHits", playerHits)
     console.log("playerDedWitch", playerDedWitch)
 
@@ -268,4 +273,5 @@ function checkWitches(user, userHits, userDedWitch) {
         infoDisplay.textContent = 'All your witches have been revealed, you lose. Do better.'
         gameOver = true
     }
+
 // game not stopping

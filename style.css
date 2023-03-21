@@ -15,12 +15,13 @@
 }
 
 #options-container {
-    width: 500px;
+    width: 520px;
     height: 100px;
-    margin: 2% ;
     background-color: #8261d4;
     display: flex;
     align-items: center;
+    margin-left: 6%;
+    margin-top: 2%
 }
 /* witches color */
 .elder {
@@ -121,7 +122,7 @@
     background-color: darkred !important;
 }
 
-.miss {
+.nothing {
     background-color: grey !important;
 }
 
@@ -145,8 +146,6 @@ body {
     height: 80px;
 }
 
- 
-
 a {
     text-decoration: none;
     color: white;
@@ -169,7 +168,9 @@ a {
   margin: 2%;
 } 
 
-button {
+#rotate-button,
+#submit,
+#refresh-button {
     background-color: rgb(167, 142, 184);
     color: aliceblue;
     border-color: #644B77;
@@ -178,7 +179,24 @@ button {
     padding: 1%;
     text-shadow: black 1.5px 1.5px;
     font-weight: 600;
-    margin: 2%;
+    margin: 1%;
+}
+
+#rotate-button {
+    margin-left: 6%;
+}
+
+.play,
+.pause {
+    background-color: rgb(167, 142, 184);
+    color: aliceblue;
+    border-color: #644B77;
+    border-radius: 5%;
+    font-size: 1.5rem;
+    padding: 1%;
+    text-shadow: black 1.5px 1.5px;
+    font-weight: 600;
+    margin: 1%;
 }
 
 .cat-inst {
