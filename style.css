@@ -134,12 +134,6 @@ body {
     color: white;
 }
 
-button {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 1%;
-}
-
 #game-info {
     color: whitesmoke;
     margin: 2%;
@@ -165,15 +159,8 @@ a {
 }
 
 .game-button {
-    background-color: rgb(167, 142, 184);
-    color: aliceblue;
-    border-color: #644B77;
-    border-radius: 5%;
-    font-size: 1.5rem;
-    padding: 1%;
-    text-shadow: black 1.5px 1.5px;
-    font-weight: 600;
-    margin: 2%;
+   display: flex;
+   justify-content: center;
 }
 
 .container{
@@ -193,8 +180,6 @@ button {
     font-weight: 600;
     margin: 2%;
 }
-
-
 
 .cat-inst {
     display: flex;
