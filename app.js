@@ -265,11 +265,11 @@ function checkWitches(user, userHits, userDedWitch) {
     console.log("playerHits", playerHits)
     console.log("playerDedWitch", playerDedWitch)
 
-    if (playerDedWitch.length === 5) {
+    if (playerDedWitch.length === 10) {
         infoDisplay.textContent = 'All enemy witches revealed, you win!'
         gameOver = true
     }
-    if(opponentDedWitch.length === 5) {
+    if(opponentDedWitch.length === 10) {
         infoDisplay.textContent = 'All your witches have been revealed, you lose. Do better.'
         gameOver = true
     }
