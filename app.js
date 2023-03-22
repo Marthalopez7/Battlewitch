@@ -55,70 +55,93 @@ function buildBoard(color, user){
 buildBoard('#2D592C', 'player')
 buildBoard('#2D592C', 'computer')
 
-// creating witches and cauldron
-class Witch {
+// creating potions
+class Potion {
     constructor(name, length) {
         this.name = name
         this.length = length
     }
 }
 
-const cauldron = new Witch('caul', 1)
-const elderWitch = new Witch('elder', 4)
-const youngWitch = new Witch('young', 2)
-const adultWitch = new Witch('adult', 3)
-const catWitch = new Witch('cat', 5)
+const skip = new Potion ('skip', 1)
 
-const allWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch, catWitch]
-let notDropped
+// creating witches and cauldron
+// class Witch {
+//     constructor(name, length) {
+//         this.name = name
+//         this.length = length
+//     }
+// }
+
+// const cauldron = new Witch('caul', 1)
+// const elderWitch = new Witch('elder', 4)
+// const youngWitch = new Witch('young', 2)
+// const adultWitch = new Witch('adult', 3)
+// const catWitch = new Witch('cat', 5)
+
+// const allWitchCharacters = [cauldron, elderWitch, youngWitch, adultWitch, catWitch]
+// let notDropped
+
 
 // add witch characters to board randomly 
-function addWitch(user, witch, startId) {
-    const allGridsqaures = document.querySelectorAll(`#${user} div`)
-    let randomBoolean = Math.random() < 0.5
-    let isHorizontal = user === 'player' ?  angle === 0 : randomBoolean
-    let randomStartIndex = Math.floor(Math.random() * width * width)
-    let startIndex = startId ? startId : randomStartIndex
-    let gridBorder = isHorizontal ? startIndex <= width * width - Witch.length ? startIndex : width * width - Witch.length :
-    startIndex <= width * width - width * Witch.length ? startIndex : startIndex - Witch.length * width + width
+// function addWitch(user, witch, startId) {
+//     const allGridsqaures = document.querySelectorAll(`#${user} div`)
+//     let randomBoolean = Math.random() < 0.5
+//     let isHorizontal = user === 'player' ?  angle === 0 : randomBoolean
+//     let randomStartIndex = Math.floor(Math.random() * width * width)
+//     let startIndex = startId ? startId : randomStartIndex
+//     let gridBorder = isHorizontal ? startIndex <= width * width - witch.length ? startIndex : width * width - witch.length :
+//     startIndex <= width * width - width * witch.length ? startIndex : startIndex - witch.length * width + width
 
-    let witchBlocks = []
+//     let witchBlocks = []
 
-    for (let i = 0; i < Witch.length; i++) {
-        if (isHorizontal) {  
-            witchBlocks.push(allGridsqaures[Number(gridBorder) + i])
-        } else {
-            witchBlocks.push(allGridsqaures[Number(gridBorder) + i * width])
-        }
-    }
+//     for (let i = 0; i < Witch.length; i++) {
+//         if (isHorizontal) {  
+//             witchBlocks.push(allGridsqaures[Number(gridBorder) + i])
+//         } else {
+//             witchBlocks.push(allGridsqaures[Number(gridBorder) + i * width])
+//         }
+//     }
 
-    let fix
-    if (isHorizontal) {
-    witchBlocks.every((_witchBlocks, index) => 
-        fix = witchBlocks[0].id % width !== width - (witchBlocks.length - (index + 1)))
-    } else {
-        witchBlocks.every((_witchBlocks, index) =>
-        fix = witchBlocks[0].id < 90 + (width * index + 1) )
-    }
+//     let fix
+//     if (isHorizontal) {
+//     witchBlocks.every((_witchBlocks, index) => 
+//         fix = witchBlocks[0].id % width !== width - (witchBlocks.length - (index + 1)))
+//     } else {
+//         witchBlocks.every((_witchBlocks, index) =>
+//         fix = witchBlocks[0].id < 90 + (width * index + 1) )
+//     }
  
-    const empty = witchBlocks.every(witchBlocks => !witchBlocks.classList.contains('taken'))
-    if (fix && empty) {
-        witchBlocks.forEach(witchBlocks => {
-        witchBlocks.classList.add('witchName')
-        witchBlocks.classList.add('taken')
-        witchBlocks.classList.add("type")
-        })
-    } else {
-        if (user === 'computer') addWitch('computer', witch, startId);
-        if (user === 'player') notDropped = true
-    }
+//     const empty = witchBlocks.every(witchBlocks => !witchBlocks.classList.contains('taken'))
+//     if (fix && empty) {
+//         witchBlocks.forEach(witchBlocks => {
+//         witchBlocks.classList.add('witchName')
+//         witchBlocks.classList.add('taken')
+//         witchBlocks.classList.add("type")
+//         })
+//     } else {
+//         if (user === 'computer') addWitch('computer', witch, startId);
+//         if (user === 'player') notDropped = true
+//     }
   
 
-}
-allWitchCharacters.forEach(witch => addWitch('computer', witch))
+// }
+// allWitchCharacters.forEach(witch => addWitch('computer', witch))
 
 // draggable witches
+
+
+function addWitch(witch) {
+    let randomDirection = Math.floor(Math.random() * witch.direction.length)
+    let currentWitchLocation = witch.direction[randomDirection]
+    if (randomDirection === 0) direction = 1
+    if (randomDirection === 1) direction = 10
+    let randomStart = Math.abs(Math.floor(Math.random() * computerHits.length - (witch.directions[0].length * direction)))
+}
+
+
 let draggedWitch
+
 const optionWitchArray = Array.from(optionsContainer.children)
 optionWitchArray.forEach(optionWitch => optionWitch.addEventListener('dragstart', dragStart))
 
@@ -223,7 +246,7 @@ function opponetsturn() {
                 classes = classes.filter(className => className !== 'taken')
                 computerHits.push(...classes)
                 checkWitches('computer', computerHits, opponentDedWitch)
-            } else {
+            } else  {
                 infoDisplay.textContent ='Miss!'
                 allGridsqaures[randomturn].classList.add('nothing')
             }          
