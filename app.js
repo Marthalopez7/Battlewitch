@@ -23,7 +23,8 @@ const rotateButton = document.querySelector('#rotate-button')
 const sumbitButton = document.querySelector('#submit')
 const infoDisplay = document.querySelector("#info")
 const turnDisplay = document.querySelector("#whose-turn")
-const width = 10
+const width = 10;
+const potionContainer = document.querySelector('#potion-container') 
 
 // roatates the witches in the option container to 90 then back to 0 then 90
 let angle = 0
@@ -91,10 +92,17 @@ class Witch {
 //         cols: 2
 //     },
 // ];
+class Potion {
+    constructor(name, length) {
+        this.name = name
+        this.length = length
+    }
+}
 
+const skip = new Potion ('skip', 1)
 const cauldron = new Witch('caul', 1)
 const elderWitch = new Witch('elder', 4)
-const youngWitch = new Witch('young', 2)
+const youngWitch = new Witch('young', 5)
 const adultWitch = new Witch('adult', 3)
 const catWitch = new Witch('cat', 5)
 
@@ -114,26 +122,28 @@ let notDropped
 
 // add witchcharacters to board randomly 
 // function addWitch(witch) {
-//     let randomDirection = Math.floor(Math.random() * witch.rows.cols.length)
-//     let present = witch.rows.cols[randomDirection]
+//     let randomDirection = Math.floor(Math.random() * witch.direction.length)
+//     let present = witch.direction[randomDirection]
 //     if (randomDirection === 0) 
 // }
-function addWitch(user, witch, startId) {
+function addWitch(user, Witch, startId) {
     const allGridsqaures = document.querySelectorAll(`#${user} div`)
     let randomBoolean = Math.random() < 0.5
     let isHorizontal = user === 'player' ?  angle === 0 : randomBoolean
     let randomStartIndex = Math.floor(Math.random() * width * width)
-    let startIndex = startId ? startId : randomStartIndex
+    let startIndex = startId ? startId : randomStartIndex;
     let gridBorder = isHorizontal ? startIndex <= width * width - Witch.Length ? startIndex : width * width - Witch.Length:
-    startIndex <= width * width - width * Witch.Length ? startIndex : startIndex - Witch.Length * width + width
+    startIndex <= width * width - width * Witch.Length ? startIndex : startIndex - Witch.Length * width + width;
 
     let witchBlocks = []
-
+    let potionSqrs = []
     for (let i = 0; i < Witch.length; i++) {
         if (isHorizontal) {  
             witchBlocks.push(allGridsqaures[Number(gridBorder) + i])
+            potionSqrs.push(allGridsqaures[Number(gridBorder) + i])
         } else {
             witchBlocks.push(allGridsqaures[Number(gridBorder) + i * width])
+            potionSqrs.push(allGridsqaures[Number(gridBorder) + i * width])
         }
     }
 
@@ -145,16 +155,19 @@ function addWitch(user, witch, startId) {
         witchBlocks.every((_witchBlocks, index) =>
         fix = witchBlocks[0].id < 90 + (width * index + 1) )
     }
-        
+    
     const empty = witchBlocks.every(witchBlocks => !witchBlocks.classList.contains('taken'))
     if (fix && empty) {
         witchBlocks.forEach(witchBlocks => {
         witchBlocks.classList.add('witchName')
-        witchBlocks.classList.add('taken')
-        witchBlocks.classList.add('type')
+        witchBlocks.classList.add('taken')   
+        })
+        potionSqrs.forEach(potionSqrs => {
+            potionSqrs.classList.add('skipPotion')
+            potionSqrs.classList.add('taken')
         })
     } else {
-        if (user === 'computer') addWitch('computer', witch, startId);
+        if (user === 'computer') addWitch('computer', Witch, startId);
         if (user === 'player') notDropped = true
     }
    
@@ -162,36 +175,11 @@ function addWitch(user, witch, startId) {
 }
 witchContainer.forEach(witch => addWitch('computer', witch))
 
-const potionArray {
-    {
-        name: 'test1',
-        effect: '',
-        img: ''
-    },
-    {
-        name: 'test2',
-        effect: ''
-    },
-    {
-        name: 'test3',
-        effect: ''
-    },
-    {
-        name: 'test4',
-        effect: ''
-    },
-    {
-        name: 'test5',
-        effect: ''
-    },
-    {
-        name: 'test6',
-        effect: ''
-    },
-}
 
-function potionEvent(potionArray) {
-    
+function skipPotion() {
+    if (e.target.classList.contains('skipPotion')) {
+
+    }
 }
 
 // draggable witches
@@ -259,12 +247,17 @@ function handleClick(e) {
            classes =classes.filter(className => className !== 'hit')
            classes = classes.filter(className => className !== 'taken')
             playerHits.push(...classes)
-            checkWitchDed('player', playerHits, playerDedWitch)
+            checkWitchesDed('player', playerHits, playerDedWitch)
         }
         if (!e.target.classList.contains('taken')) {
             infoDisplay.textContent = 'Miss!'
             e.target.classList.add('nothing')
         } 
+        if (e.target.classList.contains('skipPotion')) {
+            infoDisplay.textContent = 'Your next turn will be skipped!'
+            e.target.classList.add('skipped')
+            skipPotion()
+        }
         playerTurn = false
        const allGridsqaures = document.querySelectorAll('#computer div')
        allGridsqaures.forEach(block => block.replaceWith(block.cloneNode(true)))
@@ -281,7 +274,7 @@ function opponetsturn() {
             let randomturn = Math.floor(Math.random() * width * width)
             const allGridsqaures = document.querySelectorAll('#player div')
 
-            if( allGridsqaures[randomturn].classList.contains('taken') &&
+            if (allGridsqaures[randomturn].classList.contains('taken') &&
                 !allGridsqaures[randomturn].classList.contains('hit')
             ) {
                 opponetsturn()
@@ -310,6 +303,7 @@ function opponetsturn() {
             infoDisplay.textContent = 'launch a potion!'
             const allGridsqaures = document.querySelectorAll('#computer div')
             allGridsqaures.forEach(block => block.addEventListener('click', handleClick))
+            
         }, 4000)
     }
 }
@@ -317,25 +311,21 @@ function opponetsturn() {
 // this should check the number of witches hit from the playerHits and computerHits and end game 
 function checkWitchesDed(user, userHits, userDedWitch) {
 
-    function checkWitch(witchName, witchLength) {
+    function checkWitch(WitchName, witchLength) {
     
-        if (userHits.filter(storedWitchName => storedWitchName === witchName).length === witchLength) {
-            infoDisplay.textContent =`You revealed your opponent's ${witchName}`
+        if (userHits.filter(storedWitchName => storedWitchName === WitchName).length === witchLength) {
+            infoDisplay.textContent =`You revealed your opponent's ${witch.Name}`
         }
         if (user === 'player') {
-                playerHits = userHits.filter(storedWitchName => storedWitchName !== witchName)
+                playerHits = userHits.filter(storedWitchName => storedWitchName !== WitchName)
         }
         if (user === 'computer') {
-                infoDisplay.textContent =`Your opponent hit your ${witchName}`
-                computerHits = playerHits.filter(storedWitchName => storedWitchName !== witchName)
+                infoDisplay.textContent =`Your opponent hit your ${witch.Name}`
+                computerHits = playerHits.filter(storedWitchName => storedWitchName !== WitchName)
          }
-        userDedWitch.push(witchName)
+        userDedWitch.push(WitchName)
         }
-    checkWitch('caul', 1)
-    checkWitch('elder', 4)
-    checkWitch('young', 2)
-    checkWitch('adult', 3)
-    checkWitch('cat', 5)
+        checkWitch()
     console.log("playerHits", playerHits)
     console.log("playerDedWitch", playerDedWitch)
 
