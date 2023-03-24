@@ -40,10 +40,13 @@
     background-color: #FABB63;
 }
 
-.cat {
-    background-color: beige;
+.catOpt {
+    background-color: black;
 }
 
+.shield {
+    background-color: goldenrod;
+}
 /* Witces container size */
 .cauldron {
     width: 80px;
@@ -70,6 +73,12 @@
     width: 40px;
     height: 40px;
 }
+
+.shield-potion {
+    width: 80px;
+    height: 80px;
+}
+
 /* board ai and user color and size */
 .playing-board {
     width: 800px;
@@ -84,30 +93,11 @@
 }
 
 #computer .elder,
+#computer .catOpts,
 #computer .caul,
 #computer .young,
 #computer .adult {
     background-color: #2D592C;
-}
-
-#player .elder {
-    background-color: #A78EB8;
-}
-
-#player .caul {
-    background-color: #2E2E2E;
-}
-
-#player .young{
-    background-color: #644B77;
-}
-
-#player .adult {
-    background-color: #FABB63;
-}
-
-#player .cat {
-    background-color: beige;
 }
 
 .hit {
