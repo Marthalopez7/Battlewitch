@@ -56,14 +56,14 @@ buildBoard('#2D592C', 'player')
 buildBoard('#2D592C', 'computer')
 
 // creating potions
-class Potion {
-    constructor(name, length) {
-        this.name = name
-        this.length = length
-    }
-}
+// class Potion {
+//     constructor(name, length) {
+//         this.name = name
+//         this.length = length
+//     }
+// }
 
-const shield = new Potion ('shield', 1)
+// const shield = new Potion ('shield', 1)
 
 // creating witches and cauldron
 class Witch {
@@ -84,7 +84,7 @@ let notDropped
 
 // add witch characters to board randomly 
 function addWitch(user, witch, startId) {
-    const allGridsqaures = document.querySelectorAll(`#${user}div`)
+    const allGridsqaures = document.querySelectorAll(`#${user} div`)
     let randomBoolean = Math.random() < 0.5
     let isHorizontal = user === 'player' ? angle === 0 : randomBoolean
     let randomStartIndex = Math.floor(Math.random() * width * width)
@@ -94,9 +94,11 @@ function addWitch(user, witch, startId) {
     // set border so ships stay in grid when they load, starting with horizontal
     let validStart =  isHorizontal ? startIndex <= width * width - witch.length ? startIndex : width * width - witch.length :
     // vertical
-    startIndex <= width * width - width * witch.length ? startIndex : startIndex - witch.length * width + width
+    startIndex <= width * width - width * witch.length ? startIndex : 
+    startIndex - witch.length * width + width
 
     let witchSpaces = []
+   
     for (let i = 0; i < witch.length; i++) {
       if (isHorizontal) {
         witchSpaces.push(allGridsqaures[Number(validStart) + i])
@@ -105,17 +107,19 @@ function addWitch(user, witch, startId) {
       }
 
     }
-  let valid
+
+     let valid
+
     if (isHorizontal) {
         witchSpaces.every((_witchSpace, index) => 
-        valid = witchSpaces[0].id % width !== width- (witchSpaces.length - (index + 1)))
+        valid = witchSpaces[0].id % width !== width - (witchSpaces.length - (index + 1)))
     } else {
         witchSpaces.every((_witchSpace, index) => 
         valid = witchSpaces[0].id < 90 + (width * index + 1)
         )
     }
 
-    const notTaken = witchSpaces.every(witchSpace => witchSpace.classList.contains('taken'))
+    const notTaken = witchSpaces.every(witchSpace => !witchSpace.classList.contains('taken'))
 
         if (valid && notTaken) {
             witchSpaces.forEach(witchSpace => {
@@ -131,9 +135,9 @@ function addWitch(user, witch, startId) {
 allWitchCharacters.forEach(witch => addWitch('computer', witch))
 
 
+
 // drag player witches onto the board validly
 let draggedWitch
-
 const optionWitchArray = Array.from(optionsContainer.children)
 optionWitchArray.forEach(optionWitch => optionWitch.addEventListener('dragstart', dragStart))
 
@@ -149,8 +153,7 @@ function dragStart(e){
 }
 
 function dragOver(e) {
-    e.preventDefault()
-    const witch = allWitchCharacters[draggedWitch.id]
+    e.preventDefault()   
 }
 
 function dropWitch(e) {
@@ -161,90 +164,7 @@ function dropWitch(e) {
         draggedWitch.remove()
     }
 }
-
-//     let randomBoolean = Math.random() < 0.5
-//     let isHorizontal = user === 'player' ?  angle === 0 : randomBoolean
-//     let randomStartIndex = Math.floor(Math.random() * width * width)
-//     let startIndex = startId ? startId : randomStartIndex
-//     let gridBorder = isHorizontal ? startIndex <= width * width - witch.length ? startIndex : width * width - witch.length :
-//     startIndex <= width * width - width * witch.length ? startIndex : startIndex - witch.length * width + width
-
-//     let witchBlocks = []
-
-//     for (let i = 0; i < Witch.length; i++) {
-//         if (isHorizontal) {  
-//             witchBlocks.push(allGridsqaures[Number(gridBorder) + i])
-//         } else {
-//             witchBlocks.push(allGridsqaures[Number(gridBorder) + i * width])
-//         }
-//     }
-  // if (isHorizontal) {  
-        //     witchBlocks.push(allGridsqaures[Number(gridBorder) + i])
-        // } else {
-        //      witchBlocks.push(allGridsqaures[Number(gridBorder) + i * width])
-        // }
-//     let fix
-//     if (isHorizontal) {
-//     witchBlocks.every((_witchBlocks, index) => 
-//         fix = witchBlocks[0].id % width !== width - (witchBlocks.length - (index + 1)))
-//     } else {
-//         witchBlocks.every((_witchBlocks, index) =>
-//         fix = witchBlocks[0].id < 90 + (width * index + 1) )
-//     }
- 
-//     const empty = witchBlocks.every(witchBlocks => !witchBlocks.classList.contains('taken'))
-//     if (fix && empty) {
-//         witchBlocks.forEach(witchBlocks => {
-//         witchBlocks.classList.add('witchName')
-//         witchBlocks.classList.add('taken')
-//         witchBlocks.classList.add("type")
-//         })
-//     } else {
-//         if (user === 'computer') addWitch('computer', witch, startId);
-//         if (user === 'player') notDropped = true
-//     }
-  
-
-// }
-// allWitchCharacters.forEach(witch => addWitch('computer', witch))
-
-// // draggable witches
-
-
-
-
-// let draggedWitch
-
-// const optionWitchArray = Array.from(optionsContainer.children)
-// optionWitchArray.forEach(optionWitch => optionWitch.addEventListener('dragstart', dragStart))
-
-// const allPlayerSquares = document.querySelectorAll('#player div')
-// allPlayerSquares.forEach(playerBlock => {
-//     playerBlock.addEventListener('dragover', dragOver)
-//     playerBlock.addEventListener('drop', dropWitch)
-// })
-
-// function dragStart(e){
-//     notDropped = false
-//     draggedWitch = e.target
-// }
-
-// function dragOver(e) {
-//     e.preventDefault()
-    
-// }
-
-// function dropWitch(e) {
-//     const startId = e.target.id
-//     const witch = allWitchCharacters[draggedWitch.id]
-//     addWitch('player', witch, startId)
-//     if(!notDropped) {
-//         draggedWitch.remove()
-//     }
-// }
-
-// // start game function 
-
+// start game function 
 let gameOver = false
 let playerTurn
 

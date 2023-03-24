@@ -44,19 +44,19 @@
     background-color: black;
 }
 
-.shield {
+/* .shield {
     background-color: goldenrod;
-}
+} */
 /* Witces container size */
 .cauldron {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
    
 }
 
 .elder-witch {
     width: 90px;
-    height: 20px;    
+    height: 40px;    
 }
 
 .young-witch {
@@ -74,10 +74,10 @@
     height: 40px;
 }
 
-.shield-potion {
+/* .shield-potion {
     width: 80px;
     height: 80px;
-}
+} */
 
 /* board ai and user color and size */
 .playing-board {
@@ -93,7 +93,7 @@
 }
 
 #computer .elder,
-#computer .catOpts,
+#computer .catOpt,
 #computer .caul,
 #computer .young,
 #computer .adult {
@@ -259,6 +259,13 @@ footer h4 {
         height: 200px;
         width: 200px;
     }
+    .block {
+        width: 20px;
+        height: 20px;
+    }
+    #options-container {
+        width: 90%;
+    }
 }
 
 @media only screen and (max-width:1500px) and (min-width:600px){
@@ -268,5 +275,9 @@ footer h4 {
     .playing-board {
         height: 400px;
         width: 400px;
+    }
+    .block {
+        width: 40px;
+        height: 40px;
     }
 }
