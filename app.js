@@ -92,7 +92,8 @@ function addWitch(user, witch, startId) {
     let startIndex = startId ? startId : randomStartIndex
 
     // set border so ships stay in grid when they load, starting with horizontal
-    let validStart =  isHorizontal ? startIndex <= width * width - witch.length ? startIndex : width * width - witch.length :
+    let validStart =  isHorizontal ? startIndex <= width * width - witch.length ? startIndex : 
+    width * width - witch.length :
     // vertical
     startIndex <= width * width - width * witch.length ? startIndex : 
     startIndex - witch.length * width + width
@@ -158,7 +159,7 @@ function dragOver(e) {
 
 function dropWitch(e) {
     const startId = e.target.id
-    const witch = allWitchCharacters[draggedWitch.id]
+    const witch = allWitchCharacters[draggedWitch.lastChild.id]
     addWitch('player', witch, startId)
     if(!notDropped) {
         draggedWitch.remove()

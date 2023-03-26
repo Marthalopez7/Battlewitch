@@ -268,7 +268,7 @@ footer h4 {
     }
 }
 
-@media only screen and (max-width:1500px) and (min-width:600px){
+@media only screen and (max-width:1500) and (min-width:600px){
     .cat-inst {
         height: 20%;
     }
@@ -277,7 +277,7 @@ footer h4 {
         width: 400px;
     }
     .block {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
     }
 }
