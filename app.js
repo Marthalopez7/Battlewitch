@@ -302,4 +302,3 @@ function checkWitches(user, userHits, userDeadWitch) {
         gameOver = true
     }
 }
-
