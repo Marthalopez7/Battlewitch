@@ -44,14 +44,14 @@
     background-color: black;
 }
 
+
 /* .shield {
     background-color: goldenrod;
 } */
 /* Witces container size */
 .cauldron {
     width: 40px;
-    height: 40px;
-   
+    height: 40px; 
 }
 
 .young-witch {
@@ -237,7 +237,18 @@ footer h4 {
     filter: drop-shadow(0px 2px 7px);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1500px) and (min-width: 600px) {
+    .playing-board {
+        height: 450px;
+        width: 450px;
+    }
+    .block {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 100px) {
     .hero {
         height: 30vh;
         width: 100%;
@@ -251,29 +262,15 @@ footer h4 {
     .game-button {
         padding: 5%;
     }
-    .playing-board{
-        height: 200px;
-        width: 200px;
+    .playing-board {
+        height: 150px;
+        width: 150px;
     }
     .block {
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
     }
     #options-container {
         width: 90%;
-    }
-}
-
-@media only screen and (max-width:1500) and (min-width:600px){
-    .cat-inst {
-        height: 20%;
-    }
-    .playing-board {
-        height: 400px;
-        width: 400px;
-    }
-    .block {
-        width: 30px;
-        height: 30px;
     }
 }
