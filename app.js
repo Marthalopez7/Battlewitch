@@ -286,7 +286,7 @@ function checkWitches(user, userHits, userDeadWitch) {
     checkWitchType('adult', 3)
     checkWitchType('elder', 4)
     checkWitchType('catOpt', 5)
-}
+
     
 
     console.log("playerHits", playerHits)
@@ -300,5 +300,4 @@ function checkWitches(user, userHits, userDeadWitch) {
         infoDisplay.textContent = 'All your witches have been revealed, you lose. Do better.'
         gameOver = true
     }
-
-// game not stopping
+}
