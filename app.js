@@ -286,12 +286,13 @@ function checkWitches(user, userHits, userDeadWitch) {
     checkWitchType('adult', 3)
     checkWitchType('elder', 4)
     checkWitchType('catOpt', 5)
-}
+
     
 
     console.log("playerHits", playerHits)
     console.log("playerDeadWitch", playerDeadWitch)
-
+    
+    //game stops
     if (playerDeadWitch.length === 5) {
         infoDisplay.textContent = 'All enemy witches revealed, you win!'
         gameOver = true
@@ -300,5 +301,5 @@ function checkWitches(user, userHits, userDeadWitch) {
         infoDisplay.textContent = 'All your witches have been revealed, you lose. Do better.'
         gameOver = true
     }
+}
 
-// game not stopping
