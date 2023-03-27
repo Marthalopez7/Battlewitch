@@ -54,23 +54,23 @@
    
 }
 
-.elder-witch {
-    width: 90px;
-    height: 40px;    
-}
-
 .young-witch {
     width: 80px;
     height: 40px;  
 }
 
 .adult-witch {
-    width: 160px;
+    width: 120px;
     height: 40px;
 }
 
+.elder-witch {
+    width: 140px;
+    height: 40px;    
+}
+
 .cat-witch {
-    width: 40px;
+    width: 160px;
     height: 40px;
 }
 
@@ -106,10 +106,6 @@
 
 .nothing {
     background-color: grey !important;
-}
-
-#player .taken {
-    background-image: url(images/elder-witch.png);
 }
 
 body {
